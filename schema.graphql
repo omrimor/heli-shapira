@@ -1,11 +1,11 @@
-type AboutModelTextField {
+type AboutPageModelTextField {
   blocks: [String!]!
   links: [String!]!
   value: JsonField!
 }
 
-"""Record of type 👩 About (about)"""
-type AboutRecord implements RecordInterface {
+"""Record of type 👩 About Page (about_page)"""
+type AboutPageRecord implements RecordInterface {
   _createdAt: DateTime!
 
   """Editing URL"""
@@ -28,7 +28,61 @@ type AboutRecord implements RecordInterface {
   image: ImageFileField
   seoAnalysis: JsonField
   seoSettingsSocial: SeoField
-  text: AboutModelTextField!
+  text: AboutPageModelTextField!
+  title: String
+}
+
+type AccessibilityPageModelContentField {
+  blocks: [String!]!
+  links: [String!]!
+  value: JsonField!
+}
+
+type AccessibilityPageModelContentFieldMultiLocaleField {
+  locale: SiteLocale
+  value: AccessibilityPageModelContentField
+}
+
+"""Record of type Accessibility Page (accessibility_page)"""
+type AccessibilityPageRecord implements RecordInterface {
+  _allContentLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [AccessibilityPageModelContentFieldMultiLocaleField!]
+  _createdAt: DateTime!
+
+  """Editing URL"""
+  _editingUrl: String
+  _firstPublishedAt: DateTime
+  _isValid: BooleanType!
+  _locales: [SiteLocale!]!
+  _modelApiKey: String!
+  _publicationScheduledAt: DateTime
+  _publishedAt: DateTime
+
+  """Generates SEO and Social card meta tags to be used in your frontend"""
+  _seoMetaTags(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+  ): [Tag!]!
+  _status: ItemStatus!
+  _unpublishingScheduledAt: DateTime
+  _updatedAt: DateTime!
+  content(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): AccessibilityPageModelContentField
+  id: ItemId!
+  seoAnalysis: JsonField
+  seoSettingsSocials: SeoField
+  title: String
 }
 
 """Specifies how to filter Boolean fields"""
@@ -2303,6 +2357,140 @@ enum ItemStatus {
 
 scalar JsonField
 
+type LectureModelDescriptionField {
+  blocks: [String!]!
+  links: [String!]!
+  value: JsonField!
+}
+
+input LectureModelFilter {
+  _createdAt: CreatedAtFilter
+  id: ItemIdFilter
+  _firstPublishedAt: PublishedAtFilter
+  _publicationScheduledAt: PublishedAtFilter
+  _unpublishingScheduledAt: PublishedAtFilter
+  _publishedAt: PublishedAtFilter
+  _status: StatusFilter
+  _updatedAt: UpdatedAtFilter
+  _isValid: BooleanFilter
+  _locales: LocalesFilter
+  title: StringFilter
+  description: StructuredTextFilter
+  OR: [LectureModelFilter]
+  AND: [LectureModelFilter]
+}
+
+enum LectureModelOrderBy {
+  _createdAt_ASC
+  _createdAt_DESC
+  id_ASC
+  id_DESC
+  _firstPublishedAt_ASC
+  _firstPublishedAt_DESC
+  _publicationScheduledAt_ASC
+  _publicationScheduledAt_DESC
+  _unpublishingScheduledAt_ASC
+  _unpublishingScheduledAt_DESC
+  _publishedAt_ASC
+  _publishedAt_DESC
+  _status_ASC
+  _status_DESC
+  _updatedAt_ASC
+  _updatedAt_DESC
+  _isValid_ASC
+  _isValid_DESC
+  title_ASC
+  title_DESC
+}
+
+type LecturePageModelDescriptionField {
+  blocks: [String!]!
+  links: [String!]!
+  value: JsonField!
+}
+
+"""Record of type 🧑‍🏫 Lecture Page (lecture_page)"""
+type LecturePageRecord implements RecordInterface {
+  _createdAt: DateTime!
+
+  """Editing URL"""
+  _editingUrl: String
+  _firstPublishedAt: DateTime
+  _isValid: BooleanType!
+  _modelApiKey: String!
+  _publicationScheduledAt: DateTime
+  _publishedAt: DateTime
+
+  """Generates SEO and Social card meta tags to be used in your frontend"""
+  _seoMetaTags(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+  ): [Tag!]!
+  _status: ItemStatus!
+  _unpublishingScheduledAt: DateTime
+  _updatedAt: DateTime!
+  description: LecturePageModelDescriptionField
+  id: ItemId!
+  lectures: [LectureRecord!]!
+  seoAnalysis: JsonField
+  seoSettingsSocials: SeoField
+  title: String
+}
+
+"""Record of type 👩‍🏫 Lecture (lecture)"""
+type LectureRecord implements RecordInterface {
+  _allTitleLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [StringMultiLocaleField!]
+  _createdAt: DateTime!
+
+  """Editing URL"""
+  _editingUrl: String
+  _firstPublishedAt: DateTime
+  _isValid: BooleanType!
+  _locales: [SiteLocale!]!
+  _modelApiKey: String!
+  _publicationScheduledAt: DateTime
+  _publishedAt: DateTime
+
+  """Generates SEO and Social card meta tags to be used in your frontend"""
+  _seoMetaTags(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+  ): [Tag!]!
+  _status: ItemStatus!
+  _unpublishingScheduledAt: DateTime
+  _updatedAt: DateTime!
+  description: LectureModelDescriptionField
+  id: ItemId!
+  title(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): String
+}
+
+"""Specifies how to filter by locale"""
+input LocalesFilter {
+  """Filter records that are localized in all the specified locales"""
+  allIn: [SiteLocale!]
+
+  """
+  Filter records that are localized in at least one of the specified locales
+  """
+  anyIn: [SiteLocale!]
+
+  """Filter records that are not localized in any of the specified locales"""
+  notIn: [SiteLocale!]
+}
+
 scalar MetaTagAttributes
 
 enum MuxThumbnailFormatType {
@@ -2355,6 +2543,39 @@ type PageRecord implements RecordInterface {
   title: String!
 }
 
+type PrivacyPolicyPageModelContentField {
+  blocks: [String!]!
+  links: [String!]!
+  value: JsonField!
+}
+
+"""Record of type 🔑 Privacy Policy Page (privacy_policy_page)"""
+type PrivacyPolicyPageRecord implements RecordInterface {
+  _createdAt: DateTime!
+
+  """Editing URL"""
+  _editingUrl: String
+  _firstPublishedAt: DateTime
+  _isValid: BooleanType!
+  _modelApiKey: String!
+  _publicationScheduledAt: DateTime
+  _publishedAt: DateTime
+
+  """Generates SEO and Social card meta tags to be used in your frontend"""
+  _seoMetaTags(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+  ): [Tag!]!
+  _status: ItemStatus!
+  _unpublishingScheduledAt: DateTime
+  _updatedAt: DateTime!
+  content: PrivacyPolicyPageModelContentField
+  id: ItemId!
+  seoAnalysis: JsonField
+  seoSettingsSocials: SeoField
+  title: String
+}
+
 """Specifies how to filter by publication datetime"""
 input PublishedAtFilter {
   """
@@ -2396,10 +2617,24 @@ input PublishedAtFilter {
 """The query root for this schema"""
 type Query {
   """Returns meta information regarding a record collection"""
+  _allLecturesMeta(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+    filter: LectureModelFilter
+  ): CollectionMetadata!
+
+  """Returns meta information regarding a record collection"""
   _allRecommendationsMeta(
     """The locale to use to fetch the field's content"""
     locale: SiteLocale
     filter: RecommendationModelFilter
+  ): CollectionMetadata!
+
+  """Returns meta information regarding a record collection"""
+  _allServicesMeta(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+    filter: ServiceModelFilter
   ): CollectionMetadata!
 
   """Returns meta information regarding an assets collection"""
@@ -2421,7 +2656,7 @@ type Query {
   ): Site!
 
   """Returns the single instance record"""
-  about(
+  aboutPage(
     """The locale to use to fetch the field's content"""
     locale: SiteLocale
 
@@ -2429,7 +2664,37 @@ type Query {
     If you want to fallback to a default translation when a translation has not been found
     """
     fallbackLocales: [SiteLocale!]
-  ): AboutRecord
+  ): AboutPageRecord
+
+  """Returns the single instance record"""
+  accessibilityPage(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): AccessibilityPageRecord
+
+  """Returns a collection of records"""
+  allLectures(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+
+    """Skip the first results"""
+    skip: IntType
+
+    """Limit the number of results"""
+    first: IntType = 20
+    filter: LectureModelFilter
+    orderBy: [LectureModelOrderBy] = [_updatedAt_DESC]
+  ): [LectureRecord!]!
 
   """Returns a collection of records"""
   allRecommendations(
@@ -2450,6 +2715,25 @@ type Query {
     orderBy: [RecommendationModelOrderBy] = [_updatedAt_DESC]
   ): [RecommendationRecord!]!
 
+  """Returns a collection of records"""
+  allServices(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+
+    """Skip the first results"""
+    skip: IntType
+
+    """Limit the number of results"""
+    first: IntType = 20
+    filter: ServiceModelFilter
+    orderBy: [ServiceModelOrderBy] = [_updatedAt_DESC]
+  ): [ServiceRecord!]!
+
   """Returns a collection of assets"""
   allUploads(
     """The locale to use to fetch the field's content"""
@@ -2469,6 +2753,30 @@ type Query {
     orderBy: [UploadOrderBy] = [_createdAt_DESC]
   ): [FileField!]!
 
+  """Returns a specific record"""
+  lecture(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+    filter: LectureModelFilter
+    orderBy: [LectureModelOrderBy] = [_updatedAt_DESC]
+  ): LectureRecord
+
+  """Returns the single instance record"""
+  lecturePage(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): LecturePageRecord
+
   """Returns the single instance record"""
   page(
     """The locale to use to fetch the field's content"""
@@ -2479,6 +2787,17 @@ type Query {
     """
     fallbackLocales: [SiteLocale!]
   ): PageRecord
+
+  """Returns the single instance record"""
+  privacyPolicyPage(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): PrivacyPolicyPageRecord
 
   """Returns a specific record"""
   recommendation(
@@ -2492,6 +2811,30 @@ type Query {
     filter: RecommendationModelFilter
     orderBy: [RecommendationModelOrderBy] = [_updatedAt_DESC]
   ): RecommendationRecord
+
+  """Returns a specific record"""
+  service(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+    filter: ServiceModelFilter
+    orderBy: [ServiceModelOrderBy] = [_updatedAt_DESC]
+  ): ServiceRecord
+
+  """Returns the single instance record"""
+  servicePage(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): ServicePageRecord
 
   """Returns a specific asset"""
   upload(
@@ -2643,6 +2986,126 @@ type SeoField {
   twitterCard: String
 }
 
+type ServiceModelDescriptionField {
+  blocks: [String!]!
+  links: [String!]!
+  value: JsonField!
+}
+
+input ServiceModelFilter {
+  _createdAt: CreatedAtFilter
+  id: ItemIdFilter
+  _firstPublishedAt: PublishedAtFilter
+  _publicationScheduledAt: PublishedAtFilter
+  _unpublishingScheduledAt: PublishedAtFilter
+  _publishedAt: PublishedAtFilter
+  _status: StatusFilter
+  _updatedAt: UpdatedAtFilter
+  _isValid: BooleanFilter
+  _locales: LocalesFilter
+  title: StringFilter
+  description: StructuredTextFilter
+  OR: [ServiceModelFilter]
+  AND: [ServiceModelFilter]
+}
+
+enum ServiceModelOrderBy {
+  _createdAt_ASC
+  _createdAt_DESC
+  id_ASC
+  id_DESC
+  _firstPublishedAt_ASC
+  _firstPublishedAt_DESC
+  _publicationScheduledAt_ASC
+  _publicationScheduledAt_DESC
+  _unpublishingScheduledAt_ASC
+  _unpublishingScheduledAt_DESC
+  _publishedAt_ASC
+  _publishedAt_DESC
+  _status_ASC
+  _status_DESC
+  _updatedAt_ASC
+  _updatedAt_DESC
+  _isValid_ASC
+  _isValid_DESC
+  title_ASC
+  title_DESC
+}
+
+type ServicePageModelDescriptionField {
+  blocks: [String!]!
+  links: [String!]!
+  value: JsonField!
+}
+
+"""Record of type 💁 Service Page (service_page)"""
+type ServicePageRecord implements RecordInterface {
+  _createdAt: DateTime!
+
+  """Editing URL"""
+  _editingUrl: String
+  _firstPublishedAt: DateTime
+  _isValid: BooleanType!
+  _modelApiKey: String!
+  _publicationScheduledAt: DateTime
+  _publishedAt: DateTime
+
+  """Generates SEO and Social card meta tags to be used in your frontend"""
+  _seoMetaTags(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+  ): [Tag!]!
+  _status: ItemStatus!
+  _unpublishingScheduledAt: DateTime
+  _updatedAt: DateTime!
+  description: ServicePageModelDescriptionField
+  id: ItemId!
+  seoAnalysis: JsonField
+  seoSettingsSocials: SeoField
+  services: [ServiceRecord!]!
+  title: String
+}
+
+"""Record of type 💁 Service (service)"""
+type ServiceRecord implements RecordInterface {
+  _allTitleLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [StringNonNullMultiLocaleField!]
+  _createdAt: DateTime!
+
+  """Editing URL"""
+  _editingUrl: String
+  _firstPublishedAt: DateTime
+  _isValid: BooleanType!
+  _locales: [SiteLocale!]!
+  _modelApiKey: String!
+  _publicationScheduledAt: DateTime
+  _publishedAt: DateTime
+
+  """Generates SEO and Social card meta tags to be used in your frontend"""
+  _seoMetaTags(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+  ): [Tag!]!
+  _status: ItemStatus!
+  _unpublishingScheduledAt: DateTime
+  _updatedAt: DateTime!
+  description: ServiceModelDescriptionField
+  id: ItemId!
+  title(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): String!
+}
+
 type Site {
   favicon: FileField
   faviconMetaTags(
@@ -2721,6 +3184,16 @@ input StringMatchesFilter {
   pattern: String!
   caseSensitive: BooleanType = false
   regexp: BooleanType = true
+}
+
+type StringMultiLocaleField {
+  locale: SiteLocale
+  value: String
+}
+
+type StringNonNullMultiLocaleField {
+  locale: SiteLocale
+  value: String!
 }
 
 """Specifies how to filter Structured Text fields values"""

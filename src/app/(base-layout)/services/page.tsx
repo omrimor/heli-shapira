@@ -6,57 +6,52 @@ import { graphql } from '@/lib/datocms/graphql';
 import { draftMode } from 'next/headers';
 import { notFound } from 'next/navigation';
 import { StructuredText } from 'react-datocms';
+import { Service, ServiceFragment } from '@/components/service';
 
 const query = graphql(
   /* GraphQL */ `
-    query AboutPageQuery {
-      aboutPage {
+    query ServicePageQuery {
+      servicePage {
         _seoMetaTags {
           ...TagFragment
         }
+        _firstPublishedAt
         title
-        text {
+        description {
           value
         }
-        _firstPublishedAt
-        image {
-          alt
-          responsiveImage(sizes: "(max-width: 700px) 100vw, 700px", imgixParams: { fm: webp }) {
-            ...ResponsiveImageFragment
-          }
+        services {
+          ...ServiceFragment
         }
       }
     }
   `,
-  [TagFragment, ResponsiveImageFragment],
+  [ServiceFragment, TagFragment],
 );
 
 export const generateMetadata = generateMetadataFn({
   query,
   // A callback that picks the SEO meta tags from the result of the query
-  pickSeoMetaTags: (data) => data.aboutPage?._seoMetaTags,
+  pickSeoMetaTags: (data) => data.servicePage?._seoMetaTags,
 });
 
-export default async function AboutPage() {
+export default async function ServicesPage() {
   const { isEnabled: isDraftModeEnabled } = draftMode();
-  const { aboutPage } = await executeQuery(query, {
+  const { servicePage } = await executeQuery(query, {
     includeDrafts: isDraftModeEnabled,
   });
 
-  if (!aboutPage) {
+  if (!servicePage) {
     notFound();
   }
 
   return (
     <>
-      <h1>{aboutPage.title}</h1>
-      <figure>
-        {/* Display responsive image */}
-        <ResponsiveImage data={aboutPage.image?.responsiveImage!} />
-        {/* Display image title */}
-        <figcaption>{aboutPage.image?.alt}</figcaption>
-      </figure>
-      <StructuredText data={aboutPage.text} />
+      <h1>{servicePage.title}</h1>
+      <StructuredText data={servicePage.description} />
+      {servicePage.services.map((service, index) => (
+        <Service key={index} data={service} />
+      ))}
     </>
   );
 }

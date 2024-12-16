@@ -33,11 +33,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="he">
+    <html lang="he" dir="rtl">
       <body>
         <header>
           <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
-            <div className="flex lg:flex-1"></div>
+            <div className="hidden lg:flex lg:flex-1 lg:justify-start">
+              <Link href="/" className="text-sm/6 font-semibold text-gray-900">
+                חלי רימון
+              </Link>
+            </div>
             <div className="hidden lg:flex lg:gap-x-12">
               <Link href="/contact" className="text-sm/6 font-semibold text-gray-900">
                 צור קשר
@@ -52,11 +56,7 @@ export default function RootLayout({
                 הרצאות
               </Link>
             </div>
-            <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-              <Link href="/" className="text-sm/6 font-semibold text-gray-900">
-                חלי שפירא
-              </Link>
-            </div>
+            <div className="flex lg:flex-1"></div>
           </nav>
         </header>
         <main className="mx-auto max-w-3xl">{children}</main>
