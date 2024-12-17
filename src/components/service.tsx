@@ -1,5 +1,6 @@
 import { FragmentOf, graphql, readFragment } from '@/lib/datocms/graphql';
 import { StructuredText, renderNodeRule, toNextMetadata } from 'react-datocms';
+import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 export const ServiceFragment = graphql(`
   fragment ServiceFragment on ServiceRecord {
@@ -20,9 +21,15 @@ export function Service({ data }: Props) {
   const { title, description } = readFragment(ServiceFragment, data);
 
   return (
-    <article className="border p-3 rounded-lg">
-      <h3>{title}</h3>
-      <StructuredText data={description} />
+    <article>
+      <Card>
+        <CardHeader>
+          <CardTitle>{title}</CardTitle>
+          <CardDescription>
+            <StructuredText data={description} />
+          </CardDescription>
+        </CardHeader>
+      </Card>
     </article>
   );
 }
