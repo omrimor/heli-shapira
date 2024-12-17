@@ -25,7 +25,7 @@ export default async function Page() {
 
   return (
     <>
-      <h3 className="text-2xl text-green-500">Choose your preferred template:</h3>
+      {/* <h3 className="text-2xl text-green-500">Choose your preferred template:</h3>
       <ul>
         <li>
           <Link href="/basic">Basic:</Link> <span>Simpler code, great to start exploring</span>
@@ -36,7 +36,7 @@ export default async function Page() {
             Slightly more complex code, but content updates in real-time when Draft Mode is on
           </span>
         </li>
-      </ul>
+      </ul> */}
       {allRecommendations.map((recommendation, index) => (
         <Recommendation key={index} data={recommendation} />
       ))}
