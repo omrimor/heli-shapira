@@ -113,7 +113,7 @@ export default function RootLayout({
       className={`${notoSans.variable} ${notoSerif.variable} ${bellefair.variable} ${bonanova.variable}`}
     >
       <body className="relative isolate">
-        <div
+        {/* <div
           aria-hidden="true"
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
         >
@@ -124,7 +124,7 @@ export default function RootLayout({
             }}
             className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#059669] to-[#0f766e] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
           />
-        </div>
+        </div> */}
         <header className="bg-white">
           <nav className="mx-auto max-w-3xl flex items-center justify-between py-8">
             <div className="hidden lg:flex lg:flex-1 lg:justify-start">
@@ -148,8 +148,8 @@ export default function RootLayout({
             </div>
           </nav>
         </header>
-        <main className="mx-auto max-w-3xl min-h-screen">{children}</main>
-        <footer className="bg-white">
+        <main>{children}</main>
+        <footer className="bg-amber-100">
           <div className="mx-auto max-w-3xl grid grid-cols-3 py-8">
             <div>
               <Link href="/">חלי רימון</Link>
@@ -168,7 +168,7 @@ export default function RootLayout({
             </div>
           </div>
         </footer>
-        <div
+        {/* <div
           aria-hidden="true"
           className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
         >
@@ -179,7 +179,7 @@ export default function RootLayout({
             }}
             className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#059669] to-[#0f766e] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
           />
-        </div>
+        </div> */}
       </body>
     </html>
   );

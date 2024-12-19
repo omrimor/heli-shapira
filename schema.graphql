@@ -51,6 +51,12 @@ type AccessibilityPageRecord implements RecordInterface {
     """
     fallbackLocales: [SiteLocale!]
   ): [AccessibilityPageModelContentFieldMultiLocaleField!]
+  _allTitleLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [StringMultiLocaleField!]
   _createdAt: DateTime!
 
   """Editing URL"""
@@ -82,7 +88,15 @@ type AccessibilityPageRecord implements RecordInterface {
   id: ItemId!
   seoAnalysis: JsonField
   seoSettingsSocials: SeoField
-  title: String
+  title(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): String
 }
 
 """Specifies how to filter Boolean fields"""
@@ -382,6 +396,338 @@ type GlobalSeoField {
   twitterAccount: String
 }
 
+type HomePageModelAboutDescriptionField {
+  blocks: [String!]!
+  links: [String!]!
+  value: JsonField!
+}
+
+type HomePageModelAboutDescriptionFieldMultiLocaleField {
+  locale: SiteLocale
+  value: HomePageModelAboutDescriptionField
+}
+
+type HomePageModelContactDescriptionField {
+  blocks: [String!]!
+  links: [String!]!
+  value: JsonField!
+}
+
+type HomePageModelContactDescriptionFieldMultiLocaleField {
+  locale: SiteLocale
+  value: HomePageModelContactDescriptionField
+}
+
+type HomePageModelHeroDescriptionField {
+  blocks: [String!]!
+  links: [String!]!
+  value: JsonField!
+}
+
+type HomePageModelHeroDescriptionFieldMultiLocaleField {
+  locale: SiteLocale
+  value: HomePageModelHeroDescriptionField
+}
+
+type HomePageModelLecturesDescriptionField {
+  blocks: [String!]!
+  links: [String!]!
+  value: JsonField!
+}
+
+type HomePageModelLecturesDescriptionFieldMultiLocaleField {
+  locale: SiteLocale
+  value: HomePageModelLecturesDescriptionField
+}
+
+type HomePageModelRecommendationsDescriptionField {
+  blocks: [String!]!
+  links: [String!]!
+  value: JsonField!
+}
+
+type HomePageModelRecommendationsDescriptionFieldMultiLocaleField {
+  locale: SiteLocale
+  value: HomePageModelRecommendationsDescriptionField
+}
+
+type HomePageModelServicesDescriptionField {
+  blocks: [String!]!
+  links: [String!]!
+  value: JsonField!
+}
+
+type HomePageModelServicesDescriptionFieldMultiLocaleField {
+  locale: SiteLocale
+  value: HomePageModelServicesDescriptionField
+}
+
+"""Record of type 🏠 Home Page (home_page)"""
+type HomePageRecord implements RecordInterface {
+  _allAboutDescriptionLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [HomePageModelAboutDescriptionFieldMultiLocaleField!]
+  _allAboutProfilePictureLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [ImageFileFieldMultiLocaleField!]
+  _allAboutTitleLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [StringMultiLocaleField!]
+  _allContactDescriptionLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [HomePageModelContactDescriptionFieldMultiLocaleField!]
+  _allContactTitleLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [StringMultiLocaleField!]
+  _allHeroDescriptionLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [HomePageModelHeroDescriptionFieldMultiLocaleField!]
+  _allHeroImageLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [ImageFileFieldMultiLocaleField!]
+  _allLecturesDescriptionLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [HomePageModelLecturesDescriptionFieldMultiLocaleField!]
+  _allLecturesLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [LectureRecordListListNonNullMultiLocaleField!]
+  _allLecturesTitleLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [StringMultiLocaleField!]
+  _allRecommendationsDescriptionLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [HomePageModelRecommendationsDescriptionFieldMultiLocaleField!]
+  _allRecommendationsLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [RecommendationRecordListListNonNullMultiLocaleField!]
+  _allRecommendationsTitleLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [StringMultiLocaleField!]
+  _allServicesDescriptionLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [HomePageModelServicesDescriptionFieldMultiLocaleField!]
+  _allServicesLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [ServiceRecordListListNonNullMultiLocaleField!]
+  _allServicesTitleLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [StringMultiLocaleField!]
+  _createdAt: DateTime!
+
+  """Editing URL"""
+  _editingUrl: String
+  _firstPublishedAt: DateTime
+  _isValid: BooleanType!
+  _locales: [SiteLocale!]!
+  _modelApiKey: String!
+  _publicationScheduledAt: DateTime
+  _publishedAt: DateTime
+
+  """Generates SEO and Social card meta tags to be used in your frontend"""
+  _seoMetaTags(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+  ): [Tag!]!
+  _status: ItemStatus!
+  _unpublishingScheduledAt: DateTime
+  _updatedAt: DateTime!
+  aboutDescription(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): HomePageModelAboutDescriptionField
+  aboutProfilePicture(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): ImageFileField
+  aboutTitle(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): String
+  contactDescription(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): HomePageModelContactDescriptionField
+  contactTitle(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): String
+  heroDescription(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): HomePageModelHeroDescriptionField
+  heroImage(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): ImageFileField
+  id: ItemId!
+  lectures(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [LectureRecord!]!
+  lecturesDescription(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): HomePageModelLecturesDescriptionField
+  lecturesTitle(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): String
+  recommendations(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [RecommendationRecord!]!
+  recommendationsDescription(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): HomePageModelRecommendationsDescriptionField
+  recommendationsTitle(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): String
+  seoAnalysis: JsonField
+  seoSettingsSocials: SeoField
+  services(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [ServiceRecord!]!
+  servicesDescription(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): HomePageModelServicesDescriptionField
+  servicesTitle(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): String
+}
+
 """Block of type 🌅 Image (image_block)"""
 type ImageBlockRecord implements RecordInterface {
   _createdAt: DateTime!
@@ -503,6 +849,11 @@ type ImageFileField implements FileFieldInterface {
   ): String!
   video: UploadVideoField
   width: IntType!
+}
+
+type ImageFileFieldMultiLocaleField {
+  locale: SiteLocale
+  value: ImageFileField
 }
 
 """Block of type 🎠 Image Gallery (image_gallery_block)"""
@@ -2477,6 +2828,11 @@ type LectureRecord implements RecordInterface {
   ): String
 }
 
+type LectureRecordListListNonNullMultiLocaleField {
+  locale: SiteLocale
+  value: [LectureRecord!]!
+}
+
 """Specifies how to filter by locale"""
 input LocalesFilter {
   """Filter records that are localized in all the specified locales"""
@@ -2549,14 +2905,32 @@ type PrivacyPolicyPageModelContentField {
   value: JsonField!
 }
 
+type PrivacyPolicyPageModelContentFieldMultiLocaleField {
+  locale: SiteLocale
+  value: PrivacyPolicyPageModelContentField
+}
+
 """Record of type 🔑 Privacy Policy Page (privacy_policy_page)"""
 type PrivacyPolicyPageRecord implements RecordInterface {
+  _allContentLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [PrivacyPolicyPageModelContentFieldMultiLocaleField!]
+  _allTitleLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [StringMultiLocaleField!]
   _createdAt: DateTime!
 
   """Editing URL"""
   _editingUrl: String
   _firstPublishedAt: DateTime
   _isValid: BooleanType!
+  _locales: [SiteLocale!]!
   _modelApiKey: String!
   _publicationScheduledAt: DateTime
   _publishedAt: DateTime
@@ -2569,11 +2943,27 @@ type PrivacyPolicyPageRecord implements RecordInterface {
   _status: ItemStatus!
   _unpublishingScheduledAt: DateTime
   _updatedAt: DateTime!
-  content: PrivacyPolicyPageModelContentField
+  content(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): PrivacyPolicyPageModelContentField
   id: ItemId!
   seoAnalysis: JsonField
   seoSettingsSocials: SeoField
-  title: String
+  title(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): String
 }
 
 """Specifies how to filter by publication datetime"""
@@ -2753,6 +3143,17 @@ type Query {
     orderBy: [UploadOrderBy] = [_createdAt_DESC]
   ): [FileField!]!
 
+  """Returns the single instance record"""
+  homePage(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): HomePageRecord
+
   """Returns a specific record"""
   lecture(
     """The locale to use to fetch the field's content"""
@@ -2860,6 +3261,7 @@ input RecommendationModelFilter {
   _status: StatusFilter
   _updatedAt: UpdatedAtFilter
   _isValid: BooleanFilter
+  _locales: LocalesFilter
   name: StringFilter
   text: StructuredTextFilter
   OR: [RecommendationModelFilter]
@@ -2895,14 +3297,32 @@ type RecommendationModelTextField {
   value: JsonField!
 }
 
+type RecommendationModelTextFieldMultiLocaleField {
+  locale: SiteLocale
+  value: RecommendationModelTextField
+}
+
 """Record of type ⭐ Recommendation (recommendation)"""
 type RecommendationRecord implements RecordInterface {
+  _allNameLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [StringMultiLocaleField!]
+  _allTextLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [RecommendationModelTextFieldMultiLocaleField!]
   _createdAt: DateTime!
 
   """Editing URL"""
   _editingUrl: String
   _firstPublishedAt: DateTime
   _isValid: BooleanType!
+  _locales: [SiteLocale!]!
   _modelApiKey: String!
   _publicationScheduledAt: DateTime
   _publishedAt: DateTime
@@ -2916,8 +3336,29 @@ type RecommendationRecord implements RecordInterface {
   _unpublishingScheduledAt: DateTime
   _updatedAt: DateTime!
   id: ItemId!
-  name: String
-  text: RecommendationModelTextField
+  name(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): String
+  text(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): RecommendationModelTextField
+}
+
+type RecommendationRecordListListNonNullMultiLocaleField {
+  locale: SiteLocale
+  value: [RecommendationRecord!]!
 }
 
 interface RecordInterface {
@@ -2990,6 +3431,11 @@ type ServiceModelDescriptionField {
   blocks: [String!]!
   links: [String!]!
   value: JsonField!
+}
+
+type ServiceModelDescriptionFieldMultiLocaleField {
+  locale: SiteLocale
+  value: ServiceModelDescriptionField
 }
 
 input ServiceModelFilter {
@@ -3068,6 +3514,12 @@ type ServicePageRecord implements RecordInterface {
 
 """Record of type 💁 Service (service)"""
 type ServiceRecord implements RecordInterface {
+  _allDescriptionLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [ServiceModelDescriptionFieldMultiLocaleField!]
   _allTitleLocales(
     """
     If you want to fallback to a default translation when a translation has not been found
@@ -3093,7 +3545,15 @@ type ServiceRecord implements RecordInterface {
   _status: ItemStatus!
   _unpublishingScheduledAt: DateTime
   _updatedAt: DateTime!
-  description: ServiceModelDescriptionField
+  description(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): ServiceModelDescriptionField
   id: ItemId!
   title(
     """The locale to use to fetch the field's content"""
@@ -3104,6 +3564,11 @@ type ServiceRecord implements RecordInterface {
     """
     fallbackLocales: [SiteLocale!]
   ): String!
+}
+
+type ServiceRecordListListNonNullMultiLocaleField {
+  locale: SiteLocale
+  value: [ServiceRecord!]!
 }
 
 type Site {
@@ -3127,6 +3592,7 @@ type Site {
 
 enum SiteLocale {
   en
+  he
 }
 
 """Specifies how to filter by status"""

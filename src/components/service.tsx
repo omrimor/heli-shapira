@@ -21,15 +21,12 @@ export function Service({ data }: Props) {
   const { title, description } = readFragment(ServiceFragment, data);
 
   return (
-    <article>
-      <Card>
-        <CardHeader>
-          <CardTitle>{title}</CardTitle>
-          <CardDescription>
-            <StructuredText data={description} />
-          </CardDescription>
-        </CardHeader>
-      </Card>
-    </article>
+    <Card className="row-span-3 grid grid-rows-subgrid">
+      <div className="border rounded-full size-16" />
+      <CardTitle>{title}</CardTitle>
+      <CardDescription>
+        <StructuredText data={description} />
+      </CardDescription>
+    </Card>
   );
 }
