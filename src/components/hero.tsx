@@ -12,6 +12,7 @@ export const HeroFragment = graphql(
       }
       heroImage {
         alt
+        url
         responsiveImage(sizes: "(max-width: 1200px) 100vw, 1200px", imgixParams: { fm: webp }) {
           ...ResponsiveImageFragment
         }
@@ -31,12 +32,7 @@ export function Hero({ data }: Props) {
   return (
     <section>
       <div className="h-96 relative overflow-hidden">
-        <Image
-          alt={heroImage?.alt ?? ''}
-          src={heroImage?.responsiveImage?.src!}
-          fill
-          className="object-cover"
-        />
+        <Image alt={heroImage?.alt ?? ''} src={heroImage?.url!} fill className="object-cover" />
         <Container className="relative top-1/2 -translate-y-1/2">
           <article className="prose max-w-none">
             <StructuredText data={heroDescription} />
