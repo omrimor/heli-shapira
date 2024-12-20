@@ -1,12 +1,14 @@
-import { Container } from '@/components/layout';
+import { Container } from '@/components/layout/container';
 import { FragmentOf, graphql, readFragment } from '@/lib/datocms/graphql';
 import { StructuredText } from 'react-datocms';
 import ResponsiveImage, { ResponsiveImageFragment } from '@/components/ResponsiveImage';
 import Image from 'next/image';
+import { Button } from './ui/button';
 
 export const HeroFragment = graphql(
   `
     fragment HeroFragment on HomePageRecord {
+      heroTitle
       heroDescription {
         value
       }
@@ -27,16 +29,22 @@ type Props = {
 };
 
 export function Hero({ data }: Props) {
-  const { heroDescription, heroImage } = readFragment(HeroFragment, data);
+  const { heroTitle, heroDescription, heroImage } = readFragment(HeroFragment, data);
 
   return (
-    <section>
-      <div className="h-96 relative overflow-hidden">
+    <section id="home">
+      <div className="h-[550px] relative overflow-hidden">
         <Image alt={heroImage?.alt ?? ''} src={heroImage?.url!} fill className="object-cover" />
         <Container className="relative top-1/2 -translate-y-1/2">
-          <article className="prose max-w-none">
-            <StructuredText data={heroDescription} />
-          </article>
+          <div className="max-w-md space-y-4">
+            <article className="prose max-w-none">
+              <h1 className="text-[#201F3E]">{heroTitle}</h1>
+              <StructuredText data={heroDescription} />
+            </article>
+            <Button className="bg-[#B35042]" asChild>
+              <a href="#contact">בואו נדבר</a>
+            </Button>
+          </div>
         </Container>
       </div>
     </section>

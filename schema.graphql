@@ -506,6 +506,12 @@ type HomePageRecord implements RecordInterface {
     """
     fallbackLocales: [SiteLocale!]
   ): [ImageFileFieldMultiLocaleField!]
+  _allHeroTitleLocales(
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): [StringMultiLocaleField!]
   _allLecturesDescriptionLocales(
     """
     If you want to fallback to a default translation when a translation has not been found
@@ -642,6 +648,15 @@ type HomePageRecord implements RecordInterface {
     """
     fallbackLocales: [SiteLocale!]
   ): ImageFileField
+  heroTitle(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+  ): String
   id: ItemId!
   lectures(
     """The locale to use to fetch the field's content"""

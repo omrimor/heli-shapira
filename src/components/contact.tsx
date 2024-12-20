@@ -1,4 +1,4 @@
-import { Container } from '@/components/layout';
+import { Container } from '@/components/layout/container';
 import { FragmentOf, graphql, readFragment } from '@/lib/datocms/graphql';
 import { ReactNode } from 'react';
 import { StructuredText } from 'react-datocms';
@@ -20,11 +20,11 @@ export function Contact({ data, children }: Props & { children: ReactNode }) {
   const { contactTitle, contactDescription } = readFragment(ContactFragment, data);
 
   return (
-    <section className="py-10">
-      <Container className="prose space-y-3">
+    <section id="contact" className="py-10">
+      <Container className="prose prose-h2:mt-0 space-y-3">
         <h2>{contactTitle}</h2>
         <StructuredText data={contactDescription} />
-        {children}
+        <div>{children}</div>
       </Container>
     </section>
   );

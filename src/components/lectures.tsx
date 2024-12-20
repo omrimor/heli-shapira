@@ -1,4 +1,4 @@
-import { Container } from '@/components/layout';
+import { Container } from '@/components/layout/container';
 import { FragmentOf, graphql, readFragment } from '@/lib/datocms/graphql';
 import { StructuredText } from 'react-datocms';
 import { Lecture, LectureFragment } from '@/components/lecture';
@@ -26,11 +26,11 @@ export function Lectures({ data }: Props) {
   const { lecturesTitle, lecturesDescription, lectures } = readFragment(LecturesFragment, data);
 
   return (
-    <section className="py-10">
-      <Container className="prose max-w-5xl space-y-3">
+    <section id="lectures" className="py-10">
+      <Container className="prose space-y-3">
         <h2>{lecturesTitle}</h2>
         <StructuredText data={lecturesDescription} />
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4 grid-rows-[0.3fr_0.6fr_auto]">
+        <div className="grid grid-cols-1 grid-rows-4 gap-4 md:grid-cols-2 md:grid-rows-2">
           {lectures.map((lecture, index) => (
             <Lecture key={index} data={lecture} />
           ))}

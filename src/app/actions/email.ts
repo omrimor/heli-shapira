@@ -25,7 +25,7 @@ export async function sendEmail(formData: FormData) {
 
   // Validate the data
   if (!email || !subject || !message) {
-    redirect('/contact?error=true');
+    redirect('/?error=true');
     // return { error: 'All fields are required' };
   }
 
@@ -39,10 +39,10 @@ export async function sendEmail(formData: FormData) {
     });
 
     // return { success: true };
-    redirect('/contact?success=true');
+    redirect('/?success=true');
   } catch (error) {
     console.error('Email error:', error);
-    redirect('/contact?error=true');
+    redirect('/?error=true');
     // return { error: 'Failed to send email' };
   }
 }

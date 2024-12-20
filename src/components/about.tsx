@@ -1,4 +1,4 @@
-import { Container } from '@/components/layout';
+import { Container } from '@/components/layout/container';
 import { FragmentOf, graphql, readFragment } from '@/lib/datocms/graphql';
 import { StructuredText } from 'react-datocms';
 
@@ -30,19 +30,21 @@ export function About({ data }: Props) {
   const { aboutTitle, aboutProfilePicture, aboutDescription } = readFragment(AboutFragment, data);
 
   return (
-    <section className="py-10">
-      <Container className="prose space-y-3">
-        <h2>{aboutTitle}</h2>
-        <div className="prose max-w-none">
-          <StructuredText data={aboutDescription} />
-        </div>
-        <figure>
-          {/* Display responsive image */}
+    <section id="about" className="py-10">
+      <div className="grid md:grid-cols-[1fr_1.5fr]">
+        <figure className="relative">
+          <h2 className="text-heli-primary text-3xl hidden md:block font-bold -translate-x-36 absolute top-0 left-0">
+            {aboutTitle}
+          </h2>
           <ResponsiveImage data={aboutProfilePicture?.responsiveImage!} />
-          {/* Display image title */}
           <figcaption>{aboutProfilePicture?.alt}</figcaption>
         </figure>
-      </Container>
+        <div>
+          <div className="prose max-w-none p-6 md:p-12">
+            <StructuredText data={aboutDescription} />
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

@@ -1,4 +1,4 @@
-import { Container } from '@/components/layout';
+import { Container } from '@/components/layout/container';
 import { FragmentOf, graphql, readFragment } from '@/lib/datocms/graphql';
 import { StructuredText } from 'react-datocms';
 import { Recommendation, RecommendationFragment } from '@/components/recommendation';
