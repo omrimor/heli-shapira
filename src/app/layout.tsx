@@ -76,46 +76,13 @@ const notoSerif = localFont({
   variable: '--font-noto-serif',
 });
 
-const bellefair = localFont({
-  src: [
-    {
-      path: '../../public/fonts/Bellefair-Regular.ttf',
-      weight: '400',
-      style: 'normal',
-    },
-  ],
-  display: 'swap',
-  variable: '--font-bellefair',
-});
-
-const bonanova = localFont({
-  src: [
-    {
-      path: '../../public/fonts/BonaNovaSC-Regular.ttf',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: '../../public/fonts/BonaNovaSC-Bold.ttf',
-      weight: '700',
-      style: 'normal',
-    },
-  ],
-  display: 'swap',
-  variable: '--font-bonanova',
-});
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="he"
-      dir="rtl"
-      className={`${notoSans.variable} ${notoSerif.variable} ${bellefair.variable} ${bonanova.variable}`}
-    >
+    <html lang="he" dir="rtl" className={`${notoSans.variable} ${notoSerif.variable}`}>
       <body className="relative isolate">
         <Header />
         <main>{children}</main>
