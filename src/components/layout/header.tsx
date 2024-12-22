@@ -12,7 +12,6 @@ export function Header() {
   const [scrollDirection, setScrollDirection] = useState('down');
 
   useMotionValueEvent(scrollY, 'change', (current) => {
-    console.log({ current, previous: scrollY?.getPrevious() });
     const diff = current - (scrollY?.getPrevious() ?? 0);
     setScrollDirection(diff > 0 ? 'down' : 'up');
   });
@@ -32,10 +31,10 @@ export function Header() {
       initial={{ y: 0 }}
       animate={{ y: 0 }}
     >
-      <Container className="h-16 flex items-center justify-between">
-        <Link href="/" className="font-bold text-xl">
-          <span className="text-heli-primary">חלי</span>
-          <span className="text-heli-secondary-dark">רימון</span>
+      <Container className="md:h-16 h-20 flex flex-col md:flex-row items-center justify-between">
+        <Link href="/" className="font-bold text-xl pt-2 md:pt-0">
+          <span className="text-heli-primary">חלי</span>{' '}
+          <span className="text-heli-secondary">רימון</span>
         </Link>
         <NavigationMenu />
       </Container>

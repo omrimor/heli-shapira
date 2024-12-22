@@ -38,7 +38,7 @@ export function Lecture({ data }: Props) {
   const Icon = iconMap[id];
 
   return (
-    <Card className="grid gap-5 grid-rows-[0.3fr_auto] hover:shadow-lg group">
+    <Card className="grid gap-5 grid-rows-[0.3fr_auto] hover:shadow-lg hover:border-heli-secondary group">
       <div className="flex items-center gap-4">
         <div className="border-2 border-heli-secondary transition-colors duration-500 rounded-full flex items-center justify-center size-12 group-hover:bg-heli-secondary">
           <Icon

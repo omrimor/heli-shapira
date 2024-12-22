@@ -1,3 +1,4 @@
+import { Container } from '@/components/layout/container';
 import { TagFragment } from '@/lib/datocms/commonFragments';
 import { executeQuery } from '@/lib/datocms/executeQuery';
 import { generateMetadataFn } from '@/lib/datocms/generateMetadataFn';
@@ -41,9 +42,11 @@ export default async function PrivacyPolicyPage() {
   }
 
   return (
-    <>
-      <h1>{privacyPolicyPage.title}</h1>
-      <StructuredText data={privacyPolicyPage.content} />
-    </>
+    <section className="min-h-screen pt-20">
+      <Container className="prose">
+        <h1>{privacyPolicyPage.title}</h1>
+        <StructuredText data={privacyPolicyPage.content} />
+      </Container>
+    </section>
   );
 }

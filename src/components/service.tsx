@@ -30,7 +30,7 @@ export function Service({ data }: Props) {
   const Icon = iconMap[id];
 
   return (
-    <Card className="grid grid-rows-[0.3fr_auto] group">
+    <Card className="grid grid-rows-[0.3fr_auto] group hover:border-heli-secondary hover:shadow-lg">
       <div className="flex items-center gap-4">
         <div className="border-2 border-heli-secondary transition-colors duration-500 rounded-full flex items-center justify-center size-12 group-hover:bg-heli-secondary">
           <Icon
@@ -39,13 +39,16 @@ export function Service({ data }: Props) {
           />
         </div>
         <CardTitle>{title}</CardTitle>
-        <Button variant="outline" className="mr-auto" asChild>
-          <a href="#contact">קביעת פגישה</a>
-        </Button>
       </div>
       <CardDescription>
         <StructuredText data={description} />
       </CardDescription>
+      <Button
+        className="md:w-fit md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"
+        asChild
+      >
+        <a href="#contact">קביעת פגישה</a>
+      </Button>
     </Card>
   );
 }

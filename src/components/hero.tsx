@@ -38,10 +38,10 @@ export function Hero({ data }: Props) {
         <Container className="relative top-1/2 -translate-y-1/2">
           <div className="max-w-md space-y-4">
             <article className="prose max-w-none">
-              <h1 className="text-[#201F3E]">{heroTitle}</h1>
+              <h1 className="text-heli-primary">{heroTitle}</h1>
               <StructuredText data={heroDescription} />
             </article>
-            <Button className="bg-[#B35042]" asChild>
+            <Button asChild>
               <a href="#contact">בואו נדבר</a>
             </Button>
           </div>

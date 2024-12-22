@@ -11,7 +11,7 @@ import { SiInstagram, SiFacebook } from '@icons-pack/react-simple-icons';
 import './global.css';
 import Link from 'next/link';
 import { Header } from '@/components/layout/header';
-import { Instagram } from 'lucide-react';
+import { Container } from '@/components/layout/container';
 
 const query = graphql(
   /* GraphQL */ `
@@ -120,17 +120,27 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <footer className="bg-heli-secondary-lightest/30 mt-12">
-          <div className="mx-auto max-w-3xl grid grid-cols-3 py-8">
+          <Container className="grid grid-cols-3 py-8">
             <div className="flex items-center">
               <Link href="/">חלי רימון</Link>
             </div>
             <div className="flex items-center justify-center gap-4">
-              <div className="rounded-full flex items-center justify-center size-10 bg-white">
+              <a
+                href="https://www.instagram.com/heli__rimon/"
+                className="rounded-full flex items-center justify-center size-10 bg-white"
+                rel="noreferrer"
+                target="_blank"
+              >
                 <SiInstagram className="text-heli-secondary" size="20" />
-              </div>
-              <div className="rounded-full flex items-center justify-center size-10 bg-white">
+              </a>
+              <a
+                href="https://www.facebook.com/heli.shapira.5"
+                className="rounded-full flex items-center justify-center size-10 bg-white"
+                rel="noreferrer"
+                target="_blank"
+              >
                 <SiFacebook className="text-heli-secondary" size="20" />
-              </div>
+              </a>
             </div>
             <div className="text-sm flex items-center justify-end">
               <p>
@@ -143,7 +153,7 @@ export default function RootLayout({
                 </Link>
               </p>
             </div>
-          </div>
+          </Container>
         </footer>
       </body>
     </html>

@@ -31,20 +31,20 @@ export function About({ data }: Props) {
 
   return (
     <section id="about" className="py-10">
-      <div className="grid md:grid-cols-[1fr_1.5fr]">
-        <figure className="relative">
-          <h2 className="text-heli-primary text-3xl hidden md:block font-bold -translate-x-36 absolute top-0 left-0">
-            {aboutTitle}
-          </h2>
-          <ResponsiveImage data={aboutProfilePicture?.responsiveImage!} />
-          <figcaption>{aboutProfilePicture?.alt}</figcaption>
-        </figure>
-        <div>
-          <div className="prose max-w-none p-6 md:p-12">
+      <Container className="prose prose-h2:mt-0 prose-figure:w-full prose-figure:rounded-xl prose-figure:my-0 prose-img:rounded-xl group">
+        <div className="grid gap-6 md:grid-cols-[0.3fr_1fr]">
+          <div className="filter-none md:saturate-0 group-hover:saturate-100 transition-all">
+            <figure>
+              <ResponsiveImage data={aboutProfilePicture?.responsiveImage!} />
+              <figcaption>{aboutProfilePicture?.alt}</figcaption>
+            </figure>
+          </div>
+          <div className="max-w-none">
+            <h2 className="text-heli-primary">{aboutTitle}</h2>
             <StructuredText data={aboutDescription} />
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }
