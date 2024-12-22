@@ -41,7 +41,7 @@ export function Hero({ data }: Props) {
               <h1 className="text-heli-primary">{heroTitle}</h1>
               <StructuredText data={heroDescription} />
             </article>
-            <Button asChild>
+            <Button size="lg" asChild>
               <a href="#contact">בואו נדבר</a>
             </Button>
           </div>

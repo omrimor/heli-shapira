@@ -30,7 +30,7 @@ export default function ContactForm() {
         </div>
       </div>
       <div>
-        <Label htmlFor="message">איך אוכל לעזור</Label>
+        <Label htmlFor="message">איך אוכל לעזור?</Label>
         <textarea
           id="message"
           name="message"

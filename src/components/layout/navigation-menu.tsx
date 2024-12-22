@@ -5,10 +5,10 @@ import { motion, useScroll } from 'motion/react';
 import { useEffect, useState } from 'react';
 
 const navItems = [
-  { name: 'שירותים', href: '#services', sectionId: 'services' },
-  { name: 'הרצאות', href: '#lectures', sectionId: 'lectures' },
-  { name: 'מי אני', href: '#about', sectionId: 'about' },
-  { name: 'דברו איתי', href: '#contact', sectionId: 'contact' },
+  { name: 'שירותים', href: '/#services', sectionId: 'services' },
+  { name: 'הרצאות', href: '/#lectures', sectionId: 'lectures' },
+  { name: 'מי אני', href: '/#about', sectionId: 'about' },
+  { name: 'דברו איתי', href: '/#contact', sectionId: 'contact' },
 ];
 
 export function NavigationMenu() {
@@ -23,7 +23,10 @@ export function NavigationMenu() {
       const headerHeight = 64; // 4rem or h-16
 
       sections.forEach((section) => {
-        if (!section) return;
+        if (!section) {
+          setActiveSection('');
+          return;
+        }
 
         const rect = section.getBoundingClientRect();
         const sectionTop = rect.top - headerHeight;

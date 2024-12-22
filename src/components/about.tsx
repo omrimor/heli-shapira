@@ -32,7 +32,7 @@ export function About({ data }: Props) {
 
   return (
     <section id="about" className="py-10">
-      <Container className="prose prose-h2:mt-0 prose-figure:w-full prose-figure:rounded-xl prose-figure:my-0 prose-img:rounded-xl group">
+      <Container className="prose prose-a:text-heli-secondary prose-h2:mt-0 prose-figure:w-full prose-figure:rounded-xl prose-figure:my-0 prose-img:rounded-xl group">
         <div className="grid gap-6 md:grid-cols-[0.3fr_1fr]">
           <div className="filter-none md:saturate-0 group-hover:saturate-100 transition-all">
             <figure>

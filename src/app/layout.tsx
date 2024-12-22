@@ -87,8 +87,8 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <footer className="bg-heli-secondary-lightest/30 mt-12">
-          <Container className="grid grid-cols-3 py-8">
-            <div className="flex items-center">
+          <Container className="grid gap-3 md:grid-cols-3 py-8">
+            <div className="flex items-center justify-center md:justify-normal">
               <Link href="/">חלי רימון</Link>
             </div>
             <div className="flex items-center justify-center gap-4">
@@ -109,7 +109,7 @@ export default function RootLayout({
                 <SiFacebook className="text-heli-secondary" size="20" />
               </a>
             </div>
-            <div className="text-sm flex items-center justify-end">
+            <div className="text-sm flex items-center justify-center md:justify-end">
               <p>
                 <Link className="underline" href="/privacy-policy">
                   מדיניות פרטיות
