@@ -2,6 +2,7 @@ import { Container } from '@/components/layout/container';
 import { FragmentOf, graphql, readFragment } from '@/lib/datocms/graphql';
 import { ReactNode } from 'react';
 import { StructuredText } from 'react-datocms';
+import { HeadingWithHighlight } from './heading-with-highlight';
 
 export const ContactFragment = graphql(`
   fragment ContactFragment on HomePageRecord {
@@ -22,7 +23,9 @@ export function Contact({ data, children }: Props & { children: ReactNode }) {
   return (
     <section id="contact" className="py-10">
       <Container className="prose prose-h2:mt-0 space-y-3">
-        <h2>{contactTitle}</h2>
+        <HeadingWithHighlight>
+          <h2>{contactTitle}</h2>
+        </HeadingWithHighlight>
         <StructuredText data={contactDescription} />
         <div>{children}</div>
       </Container>

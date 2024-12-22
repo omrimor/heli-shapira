@@ -34,7 +34,6 @@ const iconMap: Record<string, typeof BedDouble> = {
 export function Lecture({ data }: Props) {
   const { id, title, description } = readFragment(LectureFragment, data);
 
-  console.log({ id, title });
   const Icon = iconMap[id];
 
   return (

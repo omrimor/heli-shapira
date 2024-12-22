@@ -2,6 +2,7 @@ import { Container } from '@/components/layout/container';
 import { FragmentOf, graphql, readFragment } from '@/lib/datocms/graphql';
 import { StructuredText } from 'react-datocms';
 import { Service, ServiceFragment } from './service';
+import { HeadingWithHighlight } from './heading-with-highlight';
 
 export const ServicesFragment = graphql(
   `
@@ -29,7 +30,9 @@ export function Services({ data }: Props) {
     <section id="services" className="py-10">
       <Container className="space-y-3 prose prose-a:no-underline">
         <div>
-          <h2>{servicesTitle}</h2>
+          <HeadingWithHighlight>
+            <h2>{servicesTitle}</h2>
+          </HeadingWithHighlight>
           <StructuredText data={servicesDescription} />
         </div>
         <div className="flex flex-col gap-4">

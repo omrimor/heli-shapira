@@ -3,6 +3,7 @@ import { FragmentOf, graphql, readFragment } from '@/lib/datocms/graphql';
 import { StructuredText } from 'react-datocms';
 
 import ResponsiveImage, { ResponsiveImageFragment } from '@/components/ResponsiveImage';
+import { HeadingWithHighlight } from './heading-with-highlight';
 
 export const AboutFragment = graphql(
   `
@@ -40,7 +41,9 @@ export function About({ data }: Props) {
             </figure>
           </div>
           <div className="max-w-none">
-            <h2 className="text-heli-primary">{aboutTitle}</h2>
+            <HeadingWithHighlight>
+              <h2 className="text-heli-primary relative">{aboutTitle}</h2>
+            </HeadingWithHighlight>
             <StructuredText data={aboutDescription} />
           </div>
         </div>
