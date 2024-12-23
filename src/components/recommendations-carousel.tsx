@@ -35,7 +35,7 @@ export function RecommendationsCarousel({ data }: Props) {
       <CarouselContent>
         {recommendations.map((recommendation, index) => (
           <CarouselItem key={index}>
-            <div className="p-1">
+            <div className="bg-white border border-[#98D8F4]">
               <Recommendation data={recommendation} />
             </div>
           </CarouselItem>

@@ -53,8 +53,8 @@ export function NavigationMenu() {
           className={cn(
             'relative inline-block py-2 text-sm font-medium transition-colors',
             activeSection === item.sectionId
-              ? 'text-heli-secondary-dark'
-              : 'text-heli-secondary hover:text-heli-secondary-dark',
+              ? 'text-heli-primary'
+              : 'text-[#6C79D9] hover:text-heli-primary',
           )}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -62,7 +62,7 @@ export function NavigationMenu() {
           {item.name}
           {activeSection === item.sectionId && (
             <motion.div
-              className="absolute bottom-0 inset-x-0 h-0.5 bg-heli-secondary-dark"
+              className="absolute bottom-0 inset-x-0 h-0.5 bg-[#98D8F4]"
               layoutId="activeSection"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
