@@ -23,19 +23,11 @@ export function Service({ data }: Props) {
   const { title, description } = readFragment(ServiceFragment, data);
 
   return (
-    <div className="basis-[45%] grid grid-rows-[0.3fr_auto] group border-b-2 prose">
+    <div className="md:basis-[45%] grid grid-rows-[0.2fr_auto] group border-b-2 border-b-[#98D8F4] prose">
       <h3>{title}</h3>
       <div className="max-w-lg">
         <StructuredText data={description} />
       </div>
-      {/* <CardDescription>
-      </CardDescription> */}
-      {/* <Button
-        className="md:w-fit md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"
-        asChild
-      >
-        <a href="#contact">קביעת פגישה</a>
-      </Button> */}
     </div>
   );
 }

@@ -86,7 +86,7 @@ export default function RootLayout({
       <body className="relative isolate">
         <Header />
         <main>{children}</main>
-        <footer className="bg-heli-secondary-lightest/30 mt-12">
+        <footer className="bg-[#98D8F4]/50 mt-12">
           <Container className="grid gap-3 md:grid-cols-3 py-8">
             <div className="flex items-center justify-center md:justify-normal">
               <Link href="/">חלי רימון</Link>
@@ -98,7 +98,7 @@ export default function RootLayout({
                 rel="noreferrer"
                 target="_blank"
               >
-                <SiInstagram className="text-heli-secondary" size="20" />
+                <SiInstagram className="text-[#6C79D9]" size="20" />
               </a>
               <a
                 href="https://www.facebook.com/heli.shapira.5"
@@ -106,7 +106,7 @@ export default function RootLayout({
                 rel="noreferrer"
                 target="_blank"
               >
-                <SiFacebook className="text-heli-secondary" size="20" />
+                <SiFacebook className="text-[#6C79D9]" size="20" />
               </a>
             </div>
             <div className="text-sm flex items-center justify-center md:justify-end">

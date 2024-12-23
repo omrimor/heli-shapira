@@ -22,10 +22,8 @@ export function Contact({ data, children }: Props & { children: ReactNode }) {
 
   return (
     <section id="contact" className="py-10">
-      <Container className="prose prose-h2:mt-0 space-y-3">
-        <HeadingWithHighlight>
-          <h2>{contactTitle}</h2>
-        </HeadingWithHighlight>
+      <Container className="prose prose-h2:mt-0 prose-h2:text-[#F9494B] space-y-3">
+        <h2>{contactTitle}</h2>
         <StructuredText data={contactDescription} />
         <div>{children}</div>
       </Container>
