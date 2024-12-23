@@ -19,36 +19,23 @@ type Props = {
   data: FragmentOf<typeof ServiceFragment>;
 };
 
-const iconMap: Record<string, typeof BedDouble> = {
-  HueWWY49QzuKuQAk8dYstw: Presentation,
-  eZJP6EwsSDm8kA4POiKPQQ: BedDouble,
-  M7LK3eghQaCawjHrcVMm6g: Droplets,
-};
-
 export function Service({ data }: Props) {
-  const { title, description, id } = readFragment(ServiceFragment, data);
-  const Icon = iconMap[id];
+  const { title, description } = readFragment(ServiceFragment, data);
 
   return (
-    <Card className="grid grid-rows-[0.3fr_auto] group hover:border-heli-secondary hover:shadow-lg">
-      <div className="flex items-center gap-4">
-        <div className="border-2 border-heli-secondary transition-colors duration-500 rounded-full flex items-center justify-center size-12 group-hover:bg-heli-secondary">
-          <Icon
-            size="24"
-            className="text-heli-secondary group-hover:text-white transition-colors duration-500"
-          />
-        </div>
-        <CardTitle>{title}</CardTitle>
-      </div>
-      <CardDescription>
+    <div className="basis-[45%] grid grid-rows-[0.3fr_auto] group border-b-2 prose">
+      <h3>{title}</h3>
+      <div className="max-w-lg">
         <StructuredText data={description} />
-      </CardDescription>
-      <Button
+      </div>
+      {/* <CardDescription>
+      </CardDescription> */}
+      {/* <Button
         className="md:w-fit md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"
         asChild
       >
         <a href="#contact">קביעת פגישה</a>
-      </Button>
-    </Card>
+      </Button> */}
+    </div>
   );
 }

@@ -3,6 +3,7 @@ import { FragmentOf, graphql, readFragment } from '@/lib/datocms/graphql';
 import { StructuredText } from 'react-datocms';
 import { Lecture, LectureFragment } from '@/components/lecture';
 import { HeadingWithHighlight } from './heading-with-highlight';
+import Image from 'next/image';
 
 export const LecturesFragment = graphql(
   `
@@ -28,12 +29,18 @@ export function Lectures({ data }: Props) {
 
   return (
     <section id="lectures" className="py-10">
-      <Container className="prose space-y-3">
+      <Container className="prose space-y-3 relative">
+        <div className="absolute right-0 bottom-0 w-[300px] h-[440px] translate-x-1/2 -translate-y-1/2">
+          <Image fill alt="" src="/images/lectures/playblocks.svg" className="object-contain" />
+        </div>
+        <div className="absolute right-0 bottom-0 w-[300px] h-[370px] translate-x-full -translate-y-1/2">
+          <Image fill alt="" src="/images/lectures/girl.svg" className="object-contain" />
+        </div>
         <HeadingWithHighlight>
           <h2>{lecturesTitle}</h2>
         </HeadingWithHighlight>
         <StructuredText data={lecturesDescription} />
-        <div className="grid grid-cols-1 grid-rows-4 gap-4 md:grid-cols-2 md:grid-rows-2">
+        <div className="flex flex-wrap border-2 border-heli-primary">
           {lectures.map((lecture, index) => (
             <Lecture key={index} data={lecture} />
           ))}
