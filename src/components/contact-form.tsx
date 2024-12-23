@@ -5,6 +5,7 @@ import { sendEmail } from '@/app/actions/email';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
+import { useEffect, useRef } from 'react';
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -16,9 +17,24 @@ function SubmitButton() {
   );
 }
 
-export default function ContactForm() {
+export default function ContactForm({
+  searchParams,
+}: {
+  searchParams: { success?: boolean; error?: boolean };
+}) {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    if (searchParams.success) {
+      formRef.current?.reset();
+    }
+    if (searchParams.error) {
+      formRef.current?.reset();
+    }
+  }, [searchParams.success, searchParams.error]);
+
   return (
-    <form action={sendEmail} className="space-y-4 flex flex-col">
+    <form ref={formRef} action={sendEmail} className="space-y-4 flex flex-col">
       <div className="flex md:flex-row flex-col gap-4">
         <div className="w-full">
           <Label htmlFor="email">כתובת מייל</Label>

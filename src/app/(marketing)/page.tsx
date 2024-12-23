@@ -79,7 +79,7 @@ export default async function HomePage({
         {searchParams.error && (
           <div className="bg-red-100 p-4 mb-4 rounded">מצטערת, קרתה תקלה. אני על זה</div>
         )}
-        <ContactForm />
+        <ContactForm searchParams={searchParams} />
       </Contact>
     </>
   );
