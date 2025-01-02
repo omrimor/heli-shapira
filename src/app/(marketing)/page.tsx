@@ -2,11 +2,9 @@ import { graphql } from '@/lib/datocms/graphql';
 import { executeQuery } from '@/lib/datocms/executeQuery';
 import { draftMode } from 'next/headers';
 import { notFound } from 'next/navigation';
-import { StructuredText } from 'react-datocms';
 
 import { TagFragment } from '@/lib/datocms/commonFragments';
 
-import ResponsiveImage, { ResponsiveImageFragment } from '@/components/ResponsiveImage';
 import { generateMetadataFn } from '@/lib/datocms/generateMetadataFn';
 
 import { Hero, HeroFragment } from '@/components/hero';
@@ -51,11 +49,7 @@ export const generateMetadata = generateMetadataFn({
   pickSeoMetaTags: (data) => data.homePage?._seoMetaTags,
 });
 
-export default async function HomePage({
-  searchParams,
-}: {
-  searchParams: { success?: boolean; error?: boolean };
-}) {
+export default async function HomePage() {
   const { isEnabled: isDraftModeEnabled } = draftMode();
   const { homePage } = await executeQuery(query, {
     includeDrafts: isDraftModeEnabled,
@@ -73,13 +67,7 @@ export default async function HomePage({
       <About data={homePage} />
       <Recommendations data={homePage} />
       <Contact data={homePage}>
-        {searchParams.success && (
-          <div className="bg-green-100 p-4 mb-4 rounded">Email sent successfully!</div>
-        )}
-        {searchParams.error && (
-          <div className="bg-red-100 p-4 mb-4 rounded">מצטערת, קרתה תקלה. אני על זה</div>
-        )}
-        <ContactForm searchParams={searchParams} />
+        <ContactForm />
       </Contact>
     </>
   );
