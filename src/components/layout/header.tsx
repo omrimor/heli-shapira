@@ -33,7 +33,7 @@ export function Header() {
     >
       <Container className="md:h-16 h-20 flex flex-col md:flex-row items-center justify-between">
         <Link href="/" className="font-bold text-xl pt-2 md:pt-0">
-          <span className="text-heli-primary">חלי</span>{' '}
+          <span className="text-heli-secondary-dark">חלי</span>{' '}
           <span className="text-heli-secondary">רימון</span>
         </Link>
         <NavigationMenu />

@@ -3,6 +3,7 @@ import { FragmentOf, graphql, readFragment } from '@/lib/datocms/graphql';
 import { StructuredText } from 'react-datocms';
 import { Service, ServiceFragment } from './service';
 import { HeadingWithHighlight } from './heading-with-highlight';
+import { Accordion } from '@/components/ui/accordion';
 
 export const ServicesFragment = graphql(
   `
@@ -28,18 +29,23 @@ export function Services({ data }: Props) {
 
   return (
     <section id="services" className="py-10">
-      <Container className="space-y-3 prose prose-a:no-underline">
+      <Container className="space-y-3 prose prose-a:no-underline prose-headings:my-0">
         <div>
-          <HeadingWithHighlight>
+          {/* <HeadingWithHighlight>
             <h2>{servicesTitle}</h2>
-          </HeadingWithHighlight>
-          <StructuredText data={servicesDescription} />
+          </HeadingWithHighlight> */}
+          {/* <StructuredText data={servicesDescription} /> */}
         </div>
-        <div className="flex flex-col gap-4">
+        <Accordion type="single" collapsible>
           {services.map((service, index) => (
             <Service key={index} data={service} />
           ))}
-        </div>
+        </Accordion>
+        {/* <div className="grid gap-y-4 grid-cols-1 md:grid-cols-3 grid-rows-[0.4fr_auto] md:gap-y-0 gap-x-4">
+          {services.map((service, index) => (
+            <Service key={index} data={service} />
+          ))}
+        </div> */}
       </Container>
     </section>
   );
