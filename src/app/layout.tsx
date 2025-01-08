@@ -86,7 +86,7 @@ export default function RootLayout({
       <body className="relative isolate">
         <Header />
         <main>{children}</main>
-        <footer className="bg-heli-secondary-lightest/30 mt-12">
+        <footer className="bg-heli-secondary-lightest mt-12">
           <Container className="grid gap-3 md:grid-cols-3 py-8">
             <div className="flex items-center justify-center md:justify-normal">
               <Link href="/">חלי רימון</Link>

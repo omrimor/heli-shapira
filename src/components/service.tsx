@@ -3,6 +3,8 @@ import { StructuredText, renderNodeRule, toNextMetadata } from 'react-datocms';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { BedDouble, Droplets, Presentation } from 'lucide-react';
 import { Button } from './ui/button';
+import Image from 'next/image';
+import { AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 export const ServiceFragment = graphql(`
   fragment ServiceFragment on ServiceRecord {
@@ -30,25 +32,30 @@ export function Service({ data }: Props) {
   const Icon = iconMap[id];
 
   return (
-    <Card className="grid grid-rows-[0.3fr_auto] group hover:border-heli-secondary hover:shadow-lg">
-      <div className="flex items-center gap-4">
-        <div className="border-2 border-heli-secondary transition-colors duration-500 rounded-full flex items-center justify-center size-12 group-hover:bg-heli-secondary">
-          <Icon
-            size="24"
-            className="text-heli-secondary group-hover:text-white transition-colors duration-500"
-          />
-        </div>
-        <CardTitle>{title}</CardTitle>
-      </div>
-      <CardDescription>
+    <AccordionItem value={title}>
+      <AccordionTrigger>
+        <h4>{title}</h4>
+      </AccordionTrigger>
+      <AccordionContent>
         <StructuredText data={description} />
-      </CardDescription>
-      <Button
-        className="md:w-fit md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"
-        asChild
-      >
-        <a href="#contact">קביעת פגישה</a>
-      </Button>
-    </Card>
+      </AccordionContent>
+    </AccordionItem>
   );
+
+  // return (
+  //   <div className="row-span-2 rounded-xl overflow-hidden grid grid-rows-subgrid group hover:shadow-lg bg-card text-heli-primary shadow ring-inset ring-white">
+  //     <div className="text-center bg-heli-secondary-dark group-hover:bg-heli-secondary text-white p-6">
+  //       <h4 className="text-white">{title}</h4>
+  //     </div>
+  //     <div className="text-sm px-6">
+  //       <StructuredText data={description} />
+  //     </div>
+  //     {/* <Button
+  //       className="md:w-fit md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"
+  //       asChild
+  //     >
+  //       <a href="#contact">קביעת פגישה</a>
+  //     </Button> */}
+  //   </div>
+  // );
 }

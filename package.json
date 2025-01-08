@@ -15,6 +15,7 @@
     "@datocms/cda-client": "^0.2.1",
     "@datocms/cma-client": "^3.3.5",
     "@icons-pack/react-simple-icons": "^10.2.0",
+    "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-label": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.1",
     "@types/highlight.js": "^10.1.0",
