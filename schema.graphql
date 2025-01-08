@@ -1,37 +1,3 @@
-type AboutPageModelTextField {
-  blocks: [String!]!
-  links: [String!]!
-  value: JsonField!
-}
-
-"""Record of type 👩 About Page (about_page)"""
-type AboutPageRecord implements RecordInterface {
-  _createdAt: DateTime!
-
-  """Editing URL"""
-  _editingUrl: String
-  _firstPublishedAt: DateTime
-  _isValid: BooleanType!
-  _modelApiKey: String!
-  _publicationScheduledAt: DateTime
-  _publishedAt: DateTime
-
-  """Generates SEO and Social card meta tags to be used in your frontend"""
-  _seoMetaTags(
-    """The locale to use to fetch the field's content"""
-    locale: SiteLocale
-  ): [Tag!]!
-  _status: ItemStatus!
-  _unpublishingScheduledAt: DateTime
-  _updatedAt: DateTime!
-  id: ItemId!
-  image: ImageFileField
-  seoAnalysis: JsonField
-  seoSettingsSocial: SeoField
-  text: AboutPageModelTextField!
-  title: String
-}
-
 type AccessibilityPageModelContentField {
   blocks: [String!]!
   links: [String!]!
@@ -2740,8 +2706,8 @@ input LectureModelFilter {
   _updatedAt: UpdatedAtFilter
   _isValid: BooleanFilter
   _locales: LocalesFilter
-  title: StringFilter
   description: StructuredTextFilter
+  title: StringFilter
   OR: [LectureModelFilter]
   AND: [LectureModelFilter]
 }
@@ -2767,40 +2733,6 @@ enum LectureModelOrderBy {
   _isValid_DESC
   title_ASC
   title_DESC
-}
-
-type LecturePageModelDescriptionField {
-  blocks: [String!]!
-  links: [String!]!
-  value: JsonField!
-}
-
-"""Record of type 🧑‍🏫 Lecture Page (lecture_page)"""
-type LecturePageRecord implements RecordInterface {
-  _createdAt: DateTime!
-
-  """Editing URL"""
-  _editingUrl: String
-  _firstPublishedAt: DateTime
-  _isValid: BooleanType!
-  _modelApiKey: String!
-  _publicationScheduledAt: DateTime
-  _publishedAt: DateTime
-
-  """Generates SEO and Social card meta tags to be used in your frontend"""
-  _seoMetaTags(
-    """The locale to use to fetch the field's content"""
-    locale: SiteLocale
-  ): [Tag!]!
-  _status: ItemStatus!
-  _unpublishingScheduledAt: DateTime
-  _updatedAt: DateTime!
-  description: LecturePageModelDescriptionField
-  id: ItemId!
-  lectures: [LectureRecord!]!
-  seoAnalysis: JsonField
-  seoSettingsSocials: SeoField
-  title: String
 }
 
 """Record of type 👩‍🏫 Lecture (lecture)"""
@@ -3061,17 +2993,6 @@ type Query {
   ): Site!
 
   """Returns the single instance record"""
-  aboutPage(
-    """The locale to use to fetch the field's content"""
-    locale: SiteLocale
-
-    """
-    If you want to fallback to a default translation when a translation has not been found
-    """
-    fallbackLocales: [SiteLocale!]
-  ): AboutPageRecord
-
-  """Returns the single instance record"""
   accessibilityPage(
     """The locale to use to fetch the field's content"""
     locale: SiteLocale
@@ -3183,17 +3104,6 @@ type Query {
   ): LectureRecord
 
   """Returns the single instance record"""
-  lecturePage(
-    """The locale to use to fetch the field's content"""
-    locale: SiteLocale
-
-    """
-    If you want to fallback to a default translation when a translation has not been found
-    """
-    fallbackLocales: [SiteLocale!]
-  ): LecturePageRecord
-
-  """Returns the single instance record"""
   page(
     """The locale to use to fetch the field's content"""
     locale: SiteLocale
@@ -3240,17 +3150,6 @@ type Query {
     filter: ServiceModelFilter
     orderBy: [ServiceModelOrderBy] = [_updatedAt_DESC]
   ): ServiceRecord
-
-  """Returns the single instance record"""
-  servicePage(
-    """The locale to use to fetch the field's content"""
-    locale: SiteLocale
-
-    """
-    If you want to fallback to a default translation when a translation has not been found
-    """
-    fallbackLocales: [SiteLocale!]
-  ): ServicePageRecord
 
   """Returns a specific asset"""
   upload(
@@ -3464,8 +3363,8 @@ input ServiceModelFilter {
   _updatedAt: UpdatedAtFilter
   _isValid: BooleanFilter
   _locales: LocalesFilter
-  title: StringFilter
   description: StructuredTextFilter
+  title: StringFilter
   OR: [ServiceModelFilter]
   AND: [ServiceModelFilter]
 }
@@ -3491,40 +3390,6 @@ enum ServiceModelOrderBy {
   _isValid_DESC
   title_ASC
   title_DESC
-}
-
-type ServicePageModelDescriptionField {
-  blocks: [String!]!
-  links: [String!]!
-  value: JsonField!
-}
-
-"""Record of type 💁 Service Page (service_page)"""
-type ServicePageRecord implements RecordInterface {
-  _createdAt: DateTime!
-
-  """Editing URL"""
-  _editingUrl: String
-  _firstPublishedAt: DateTime
-  _isValid: BooleanType!
-  _modelApiKey: String!
-  _publicationScheduledAt: DateTime
-  _publishedAt: DateTime
-
-  """Generates SEO and Social card meta tags to be used in your frontend"""
-  _seoMetaTags(
-    """The locale to use to fetch the field's content"""
-    locale: SiteLocale
-  ): [Tag!]!
-  _status: ItemStatus!
-  _unpublishingScheduledAt: DateTime
-  _updatedAt: DateTime!
-  description: ServicePageModelDescriptionField
-  id: ItemId!
-  seoAnalysis: JsonField
-  seoSettingsSocials: SeoField
-  services: [ServiceRecord!]!
-  title: String
 }
 
 """Record of type 💁 Service (service)"""

@@ -3,6 +3,7 @@ import { FragmentOf, graphql, readFragment } from '@/lib/datocms/graphql';
 import { StructuredText } from 'react-datocms';
 import { Lecture, LectureFragment } from '@/components/lecture';
 import { HeadingWithHighlight } from './heading-with-highlight';
+import { Accordion } from '@/components/ui/accordion';
 
 export const LecturesFragment = graphql(
   `
@@ -28,16 +29,16 @@ export function Lectures({ data }: Props) {
 
   return (
     <section id="lectures" className="py-10">
-      <Container className="prose space-y-3">
+      <Container className="prose space-y-3 prose-a:no-underline prose-headings:my-0">
         <HeadingWithHighlight>
           <h2>{lecturesTitle}</h2>
         </HeadingWithHighlight>
         <StructuredText data={lecturesDescription} />
-        <div className="grid grid-cols-1 grid-rows-4 gap-4 md:grid-cols-2 md:grid-rows-2">
+        <Accordion type="single" collapsible>
           {lectures.map((lecture, index) => (
             <Lecture key={index} data={lecture} />
           ))}
-        </div>
+        </Accordion>
       </Container>
     </section>
   );

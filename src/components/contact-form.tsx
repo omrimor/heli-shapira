@@ -12,7 +12,7 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button type="submit" disabled={pending}>
+    <Button className="w-fit" type="submit" disabled={pending}>
       {pending ? 'עוד רגע בבקשה...' : 'שלח הודעה'}
     </Button>
   );
@@ -49,7 +49,7 @@ export default function ContactForm() {
           </div>
           <div className="w-full">
             <Label htmlFor="subject">נושא הפנייה</Label>
-            <Input type="text" required id="subject" name="subject" placeholder="נושא הפנייה" />
+            <Input type="text" required id="subject" name="subject" placeholder="אשמח לעזרה ב..." />
           </div>
         </div>
         <div>

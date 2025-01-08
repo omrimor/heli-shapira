@@ -33,29 +33,12 @@ export function Service({ data }: Props) {
 
   return (
     <AccordionItem value={title}>
-      <AccordionTrigger>
-        <h4>{title}</h4>
+      <AccordionTrigger className="hover:no-underline text-heli-accent">
+        <h3 className="text-inherit">{title}</h3>
       </AccordionTrigger>
       <AccordionContent>
         <StructuredText data={description} />
       </AccordionContent>
     </AccordionItem>
   );
-
-  // return (
-  //   <div className="row-span-2 rounded-xl overflow-hidden grid grid-rows-subgrid group hover:shadow-lg bg-card text-heli-primary shadow ring-inset ring-white">
-  //     <div className="text-center bg-heli-secondary-dark group-hover:bg-heli-secondary text-white p-6">
-  //       <h4 className="text-white">{title}</h4>
-  //     </div>
-  //     <div className="text-sm px-6">
-  //       <StructuredText data={description} />
-  //     </div>
-  //     {/* <Button
-  //       className="md:w-fit md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"
-  //       asChild
-  //     >
-  //       <a href="#contact">קביעת פגישה</a>
-  //     </Button> */}
-  //   </div>
-  // );
 }

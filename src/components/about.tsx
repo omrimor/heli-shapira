@@ -4,6 +4,7 @@ import { StructuredText } from 'react-datocms';
 
 import ResponsiveImage, { ResponsiveImageFragment } from '@/components/ResponsiveImage';
 import { HeadingWithHighlight } from './heading-with-highlight';
+import Draw from './draw';
 
 export const AboutFragment = graphql(
   `
@@ -32,19 +33,24 @@ export function About({ data }: Props) {
 
   return (
     <section id="about" className="py-10">
-      <Container className="prose prose-a:text-heli-secondary prose-h2:mt-0 prose-figure:w-full prose-figure:rounded-xl prose-figure:my-0 prose-img:rounded-xl group">
-        <div className="grid gap-6 md:grid-cols-[0.3fr_1fr]">
-          <div className="filter-none md:saturate-0 group-hover:saturate-100 transition-all">
+      <Container className="prose prose-a:text-heli-secondary prose-h2:mt-0 prose-figure:w-full prose-figure:my-0 group">
+        <div className="max-w-none">
+          <HeadingWithHighlight>
+            <h2 className="text-heli-primary relative">{aboutTitle}</h2>
+          </HeadingWithHighlight>
+          <StructuredText data={aboutDescription} />
+        </div>
+        <div className="flex">
+          <div className="filter-none mr-auto md:saturate-0 group-hover:saturate-100 transition-all md:max-w-[15rem] relative">
+            <Draw
+              className="absolute top-0 right-0 translate-x-1/2 translate-y-full"
+              width={100}
+              height={200}
+            />
             <figure>
               <ResponsiveImage data={aboutProfilePicture?.responsiveImage!} />
               <figcaption>{aboutProfilePicture?.alt}</figcaption>
             </figure>
-          </div>
-          <div className="max-w-none">
-            <HeadingWithHighlight>
-              <h2 className="text-heli-primary relative">{aboutTitle}</h2>
-            </HeadingWithHighlight>
-            <StructuredText data={aboutDescription} />
           </div>
         </div>
       </Container>
