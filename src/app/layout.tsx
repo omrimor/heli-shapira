@@ -85,7 +85,7 @@ export default function RootLayout({
     <html lang="he" dir="rtl" className={`${notoSans.variable} ${notoSerif.variable}`}>
       <body className="relative isolate">
         <Header />
-        <main>{children}</main>
+        <main className="pt-20">{children}</main>
         <footer className="bg-heli-secondary-lightest mt-12">
           <Container className="grid gap-3 md:grid-cols-3 py-8">
             <div className="flex items-center justify-center md:justify-normal">

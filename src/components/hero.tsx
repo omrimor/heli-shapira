@@ -32,41 +32,27 @@ export function Hero({ data }: Props) {
   const { heroTitle, heroDescription, heroImage } = readFragment(HeroFragment, data);
 
   return (
-    <section className="md:py-20 relative">
-      <div className="relative h-[450px]">
-        <div className="absolute inset-0 overflow-hidden">
-          <Image
-            priority
-            alt={heroImage?.alt ?? ''}
-            src={heroImage?.url!}
-            fill
-            className="object-cover translate-y-20 md:translate-y-0 object-center w-full h-full md:scale-100 scale-150 contrast-125"
-          />
-          <div className="absolute inset-0 bg-[#C38370]/40" />
-          {/* <div className="absolute inset-0 bg-gradient-to-r from-transparent to-heli-accent/80" /> */}
-        </div>
-        <Container className="relative h-full">
-          <div className="max-w-xl flex items-center h-full">
-            <div className="space-y-4 -mt-20 md:mt-0">
-              <article className="prose max-w-none">
-                <h1 className="text-white [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] text-2xl md:text-4xl">
-                  {heroTitle}
-                </h1>
-              </article>
-              <Button size="lg" variant="invert" asChild>
-                <a className="text-lg" href="#contact">
-                  בואו נדבר
-                </a>
-              </Button>
-            </div>
-          </div>
-        </Container>
+    <section className="relative grid grid-cols-1 md:grid-cols-2">
+      <div className="relative inset-0 min-h-[430px] md:min-h-[700px]">
+        <Image
+          priority
+          alt={heroImage?.alt ?? ''}
+          src={heroImage?.url!}
+          fill
+          className="object-cover"
+        />
       </div>
-      <Container>
-        <article className="prose max-w-none pt-10">
+      <div className="py-10 px-14 md:px-20 relative bg-gradient-to-tr from-[#FFA5AB]/90 to-[#DA627D]/90 flex items-center">
+        <article className="prose relative max-w-none prose-p:text-heli-accent-dark">
+          <h1 className="text-heli-accent-dark text-2xl md:text-4xl">{heroTitle}</h1>
           <StructuredText data={heroDescription} />
+          <Button size="lg" variant="invert" asChild>
+            <a className="text-lg" href="#contact">
+              בואו נדבר
+            </a>
+          </Button>
         </article>
-      </Container>
+      </div>
     </section>
   );
 }
