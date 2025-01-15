@@ -12,7 +12,7 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button className="w-fit" type="submit" disabled={pending}>
+    <Button className="md:w-fit" type="submit" disabled={pending}>
       {pending ? 'עוד רגע בבקשה...' : 'שלח הודעה'}
     </Button>
   );
