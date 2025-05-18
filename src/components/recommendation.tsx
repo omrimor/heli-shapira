@@ -24,13 +24,13 @@ export function Recommendation({ data }: Props) {
   return (
     <div className="relative text-heli-primary p-5 overflow-hidden">
       <Quote
-        fill="#F5E6D3"
+        fill="#F8F4E8"
         stroke="none"
         className="absolute -translate-y-4 translate-x-2 opacity-60 top-0 right-0"
         size="88"
       />
       <Quote
-        fill="#F5E6D3"
+        fill="#F8F4E8"
         stroke="none"
         className="absolute -rotate-12 -translate-x-1/4 -translate-y-4 opacity-15 bottom-0 left-0"
         size="300"

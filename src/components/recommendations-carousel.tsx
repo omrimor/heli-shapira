@@ -68,8 +68,8 @@ export function RecommendationsCarousel({ data }: Props) {
               key={index}
               onClick={() => api?.scrollTo(index)}
               className={cn(
-                'size-2 rounded-full border-heli-accent border',
-                current === index + 1 ? 'bg-heli-accent' : 'bg-white',
+                'size-2 rounded-full border-heli-accent-light border',
+                current === index + 1 ? 'bg-heli-accent-light' : 'bg-white',
               )}
             />
           ))}

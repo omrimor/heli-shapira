@@ -27,7 +27,7 @@ export function HeadingWithHighlight({ children }: HeadingWithHighlightProps) {
           left: '45%',
           height: 3,
           originX: 1,
-          backgroundColor: '#C38370',
+          backgroundColor: '#FF2D55',
         }}
       />
       {children}
