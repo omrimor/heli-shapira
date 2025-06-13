@@ -1,10 +1,9 @@
-import { Container } from '@/components/layout/container';
 import { FragmentOf, graphql, readFragment } from '@/lib/datocms/graphql';
 import { StructuredText } from 'react-datocms';
+import { CheckCircle } from 'lucide-react';
+import { AnimatedSection } from '@/components/animated-section';
 
 import ResponsiveImage, { ResponsiveImageFragment } from '@/components/ResponsiveImage';
-import { HeadingWithHighlight } from './heading-with-highlight';
-import Draw from './draw';
 
 export const AboutFragment = graphql(
   `
@@ -29,22 +28,48 @@ type Props = {
 };
 
 export function About({ data }: Props) {
-  const { aboutTitle, aboutProfilePicture, aboutDescription } = readFragment(AboutFragment, data);
+  const { aboutTitle, aboutDescription, aboutProfilePicture } = readFragment(AboutFragment, data);
 
   return (
-    <section id="about" className="py-10">
-      <Container className="prose prose-a:text-heli-secondary prose-h2:mt-0 prose-figure:w-full prose-figure:my-0 group">
-        <div className="max-w-none">
-          <HeadingWithHighlight>
-            <h2 className="text-heli-primary relative">{aboutTitle}</h2>
-          </HeadingWithHighlight>
-          <StructuredText data={aboutDescription} />
+    <section id="about" className="w-full py-12 md:py-24 lg:py-32 bg-rose-100/50">
+      <div className="container px-4 md:px-6">
+        <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+          <AnimatedSection
+            direction="left"
+            className="relative h-[600px] w-full rounded-lg overflow-hidden shadow-lg"
+          >
+            {aboutProfilePicture?.responsiveImage && (
+              <ResponsiveImage data={aboutProfilePicture.responsiveImage} />
+            )}
+          </AnimatedSection>
+          <AnimatedSection direction="right" delay={300} className="space-y-4">
+            <div className="inline-block rounded-lg bg-rose-200 px-3 py-1 text-sm text-terracotta-800">
+              אודותיי
+            </div>
+            <h2 className="text-3xl font-bold tracking-tighter text-terracotta-900 sm:text-4xl">
+              {aboutTitle}
+            </h2>
+            <div className="text-warmGray-700 prose prose-p:text-warmGray-700 max-w-none">
+              <StructuredText data={aboutDescription} />
+            </div>
+            {/* Add some visual bullet points for qualifications */}
+            <ul className="space-y-2">
+              <li className="flex items-center gap-2 transition-all duration-300 hover:translate-x-1">
+                <CheckCircle className="h-5 w-5 text-terracotta-500" />
+                <span className="text-warmGray-700">ניסיון רב שנים בייעוץ הורים</span>
+              </li>
+              <li className="flex items-center gap-2 transition-all duration-300 hover:translate-x-1">
+                <CheckCircle className="h-5 w-5 text-terracotta-500" />
+                <span className="text-warmGray-700">מתמחה בגישות טיפוליות מתקדמות</span>
+              </li>
+              <li className="flex items-center gap-2 transition-all duration-300 hover:translate-x-1">
+                <CheckCircle className="h-5 w-5 text-terracotta-500" />
+                <span className="text-warmGray-700">מלווה משפחות בדרכן להורות מיטיבה</span>
+              </li>
+            </ul>
+          </AnimatedSection>
         </div>
-        <figure>
-          <ResponsiveImage data={aboutProfilePicture?.responsiveImage!} />
-          <figcaption>{aboutProfilePicture?.alt}</figcaption>
-        </figure>
-      </Container>
+      </div>
     </section>
   );
 }

@@ -12,7 +12,11 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button className="md:w-fit" type="submit" disabled={pending}>
+    <Button
+      className="md:w-fit bg-terracotta-600 hover:bg-terracotta-700 text-rose-50 transition-all duration-300 hover:scale-105"
+      type="submit"
+      disabled={pending}
+    >
       {pending ? 'עוד רגע בבקשה...' : 'שלח הודעה'}
     </Button>
   );
@@ -42,15 +46,13 @@ export default function ContactForm() {
         </div>
       )}
       <form ref={formRef} action={formAction} className="space-y-4 flex flex-col">
-        <div className="flex md:flex-row flex-col gap-4">
-          <div className="w-full">
-            <Label htmlFor="email">כתובת מייל</Label>
-            <Input type="email" name="email" required id="email" placeholder="your@email.com" />
-          </div>
-          <div className="w-full">
-            <Label htmlFor="subject">נושא הפנייה</Label>
-            <Input type="text" required id="subject" name="subject" placeholder="אשמח לעזרה ב..." />
-          </div>
+        <div className="w-full">
+          <Label htmlFor="email">כתובת מייל</Label>
+          <Input type="email" name="email" required id="email" placeholder="your@email.com" />
+        </div>
+        <div className="w-full">
+          <Label htmlFor="subject">נושא הפנייה</Label>
+          <Input type="text" required id="subject" name="subject" placeholder="אשמח לעזרה ב..." />
         </div>
         <div>
           <Label htmlFor="message">איך אוכל לעזור?</Label>
