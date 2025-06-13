@@ -1,7 +1,7 @@
 import { FragmentOf, readFragment, graphql } from '@/lib/datocms/graphql';
 import { StructuredText } from 'react-datocms';
-import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedSection } from '@/components/animated-section';
+import { LecturesAccordion } from '@/components/lectures-accordion';
 
 export const LectureFragment = graphql(`
   fragment LectureFragment on LectureRecord {
@@ -33,20 +33,13 @@ type Props = {
   data: FragmentOf<typeof LecturesFragment>;
 };
 
-// const iconMap: Record<string, typeof BedDouble> = {
-//   PYklYv8ZQXyuEs7kMzKI6Q: Scan,
-//   DdEl7CZsRn2wnPlvPJyinw: BedDouble,
-//   'EEexbnmxRC-3K8KLugiIcA': Droplets,
-//   'N2R2Nf-QSXCvhbOJqehjpw': ShieldCheck,
-// };
-
 export function Lectures({ data }: Props) {
   const { lecturesTitle, lecturesDescription, lectures } = readFragment(LecturesFragment, data);
 
   return (
     <section id="lectures" className="w-full py-12 md:py-24 lg:py-32 bg-rose-50">
       <div className="container px-4 md:px-6">
-        <AnimatedSection className="flex flex-col items-center justify-center space-y-4 text-center">
+        <AnimatedSection className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
           <div className="space-y-2">
             <div className="inline-block rounded-lg bg-rose-200 px-3 py-1 text-sm text-terracotta-800">
               שינוי מתחיל בהבנה{' '}
@@ -61,23 +54,17 @@ export function Lectures({ data }: Props) {
             )}
           </div>
         </AnimatedSection>
-        <div className="mx-auto grid max-w-5xl gap-6 py-12 lg:grid-cols-2">
-          {lectures.map((lecture, index) => {
-            const { title, description } = readFragment(LectureFragment, lecture);
 
-            return (
-              <AnimatedSection key={index} delay={200 + index * 200}>
-                <Card className="border-2 border-rose-200 bg-rose-50 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                  <CardContent className="p-6 space-y-4">
-                    <h3 className="text-xl font-bold text-terracotta-800">{title}</h3>
-                    <div className="text-warmGray-600 prose prose-p:text-warmGray-600 max-w-none">
-                      <StructuredText data={description} />
-                    </div>
-                  </CardContent>
-                </Card>
-              </AnimatedSection>
-            );
-          })}
+        {/* Accordion Layout */}
+        <div className="max-w-4xl mx-auto">
+          <AnimatedSection delay={200}>
+            <LecturesAccordion
+              lectures={lectures.map((lecture) => {
+                const { title, description } = readFragment(LectureFragment, lecture);
+                return { title: title || '', description };
+              })}
+            />
+          </AnimatedSection>
         </div>
       </div>
     </section>

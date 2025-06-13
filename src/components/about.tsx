@@ -44,7 +44,7 @@ export function About({ data }: Props) {
           </AnimatedSection>
           <AnimatedSection direction="right" delay={300} className="space-y-4">
             <div className="inline-block rounded-lg bg-rose-200 px-3 py-1 text-sm text-terracotta-800">
-              אודותיי
+              עליי{' '}
             </div>
             <h2 className="text-3xl font-bold tracking-tighter text-terracotta-900 sm:text-4xl">
               {aboutTitle}
@@ -52,21 +52,6 @@ export function About({ data }: Props) {
             <div className="text-warmGray-700 prose prose-p:text-warmGray-700 max-w-none">
               <StructuredText data={aboutDescription} />
             </div>
-            {/* Add some visual bullet points for qualifications */}
-            <ul className="space-y-2">
-              <li className="flex items-center gap-2 transition-all duration-300 hover:translate-x-1">
-                <CheckCircle className="h-5 w-5 text-terracotta-500" />
-                <span className="text-warmGray-700">ניסיון רב שנים בייעוץ הורים</span>
-              </li>
-              <li className="flex items-center gap-2 transition-all duration-300 hover:translate-x-1">
-                <CheckCircle className="h-5 w-5 text-terracotta-500" />
-                <span className="text-warmGray-700">מתמחה בגישות טיפוליות מתקדמות</span>
-              </li>
-              <li className="flex items-center gap-2 transition-all duration-300 hover:translate-x-1">
-                <CheckCircle className="h-5 w-5 text-terracotta-500" />
-                <span className="text-warmGray-700">מלווה משפחות בדרכן להורות מיטיבה</span>
-              </li>
-            </ul>
           </AnimatedSection>
         </div>
       </div>
