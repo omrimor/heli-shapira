@@ -36,7 +36,7 @@ export function About({ data }: Props) {
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
           <AnimatedSection
             direction="left"
-            className="relative h-[600px] w-full rounded-lg overflow-hidden shadow-lg"
+            className="relative h-[400px] md:h-[600px] w-full rounded-lg overflow-hidden shadow-lg"
           >
             {aboutProfilePicture?.responsiveImage && (
               <ResponsiveImage data={aboutProfilePicture.responsiveImage} />
