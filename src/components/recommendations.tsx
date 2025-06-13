@@ -46,6 +46,9 @@ export function Recommendations({ data }: Props) {
       <div className="container px-4 md:px-6">
         <AnimatedSection className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
+            <div className="inline-block rounded-lg bg-rose-200 px-3 py-1 text-sm text-terracotta-800">
+              כתבו עליי{' '}
+            </div>
             <h2 className="text-3xl font-bold tracking-tighter text-terracotta-900 sm:text-5xl">
               {recommendationsTitle}
             </h2>
@@ -56,34 +59,41 @@ export function Recommendations({ data }: Props) {
             )}
           </div>
         </AnimatedSection>
-        <div className="mx-auto grid max-w-5xl gap-6 py-12 lg:grid-cols-2">
-          {recommendations.map((recommendation, index) => {
-            const { name, text } = readFragment(RecommendationFragment, recommendation);
+        {/* Masonry Layout using CSS Columns */}
+        <div className="mx-auto max-w-5xl py-12">
+          <div className="columns-1 md:columns-2 lg:columns-2 gap-6 space-y-6">
+            {recommendations.map((recommendation, index) => {
+              const { name, text } = readFragment(RecommendationFragment, recommendation);
 
-            return (
-              <AnimatedSection key={index} delay={200 + index * 200}>
-                <Card className="border-2 border-rose-200 bg-rose-50 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                  <CardContent className="p-6 space-y-4">
-                    <div className="flex items-center gap-2">
-                      {[1, 2, 3, 4, 5].map((i) => (
-                        <Star
-                          key={i}
-                          className="h-5 w-5 fill-current text-terracotta-400 animate-pulse-gentle"
-                          style={{ animationDelay: `${i * 0.1}s` }}
-                        />
-                      ))}
-                    </div>
-                    <div className="italic text-warmGray-700 prose prose-p:text-warmGray-700 max-w-none">
-                      <StructuredText data={text} />
-                    </div>
-                    <div className="pt-4 border-t border-rose-200">
-                      <p className="font-medium text-terracotta-800">{name || 'אנונימי'}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </AnimatedSection>
-            );
-          })}
+              return (
+                <AnimatedSection
+                  key={index}
+                  delay={200 + index * 200}
+                  className="break-inside-avoid mb-6"
+                >
+                  <Card className="border-2 border-rose-200 bg-rose-50 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <CardContent className="p-6 space-y-4">
+                      <div className="flex items-center gap-2">
+                        {[1, 2, 3, 4, 5].map((i) => (
+                          <Star
+                            key={i}
+                            className="h-5 w-5 fill-current text-terracotta-400 animate-pulse-gentle"
+                            style={{ animationDelay: `${i * 0.1}s` }}
+                          />
+                        ))}
+                      </div>
+                      <div className="italic text-warmGray-700 prose prose-p:text-warmGray-700 max-w-none">
+                        <StructuredText data={text} />
+                      </div>
+                      <div className="pt-4 border-t border-rose-200">
+                        <p className="font-medium text-terracotta-800">{name || 'אנונימי'}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </AnimatedSection>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
