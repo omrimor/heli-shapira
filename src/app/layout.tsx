@@ -6,7 +6,7 @@ import { draftMode } from 'next/headers';
 import { toNextMetadata } from 'react-datocms';
 import localFont from 'next/font/local';
 
-import { SiInstagram, SiFacebook } from '@icons-pack/react-simple-icons';
+import { SiInstagram } from '@icons-pack/react-simple-icons';
 
 import './global.css';
 import Link from 'next/link';
@@ -85,40 +85,40 @@ export default function RootLayout({
     <html lang="he" dir="rtl" className={`${notoSans.variable} ${notoSerif.variable}`}>
       <body className="relative isolate">
         <Header />
-        <main className="pt-20">{children}</main>
-        <footer className="bg-heli-secondary-lightest/60 mt-12">
-          <Container className="grid gap-3 md:grid-cols-3 py-8">
-            <div className="flex items-center justify-center md:justify-normal">
-              <Link href="/">חלי רימון</Link>
+        {children}
+        <footer className="border-t border-rose-200 bg-rose-50">
+          <Container className="flex flex-col gap-6 py-10 md:flex-row md:items-center md:justify-between md:py-12">
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center gap-2 transition-all duration-300 hover:scale-105">
+                <span className="text-lg font-semibold text-terracotta-800">חלי רימון</span>
+              </div>
+              <p className="text-sm text-warmGray-600">
+                © {new Date().getFullYear()} חלי רימון - יעוץ הורי. כל הזכויות שמורות.
+              </p>
             </div>
-            <div className="flex items-center justify-center gap-4">
+            <div className="flex items-center gap-6">
               <a
                 href="https://www.instagram.com/heli__rimon/"
-                className="rounded-full flex items-center justify-center size-10 bg-white"
+                className="rounded-full flex items-center justify-center size-10 bg-white border border-rose-200 hover:bg-rose-50 transition-colors"
                 rel="noreferrer"
                 target="_blank"
               >
-                <SiInstagram className="text-heli-accent" size="20" />
+                <SiInstagram className="text-terracotta-600" size="20" />
               </a>
-              <a
-                href="https://www.facebook.com/heli.shapira.5"
-                className="rounded-full flex items-center justify-center size-10 bg-white"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <SiFacebook className="text-heli-accent" size="20" />
-              </a>
-            </div>
-            <div className="text-sm flex items-center justify-center md:justify-end">
-              <p>
-                <Link className="underline hover:text-heli-accent-light" href="/privacy-policy">
+              <div className="flex flex-col gap-2 md:flex-row md:gap-4">
+                <Link
+                  href="/privacy-policy"
+                  className="text-sm text-warmGray-700 hover:underline underline-offset-4 transition-colors hover:text-terracotta-600"
+                >
                   מדיניות פרטיות
                 </Link>
-                &nbsp;|&nbsp;
-                <Link className="underline hover:text-heli-accent-light" href="/accessibility">
+                <Link
+                  href="/accessibility"
+                  className="text-sm text-warmGray-700 hover:underline underline-offset-4 transition-colors hover:text-terracotta-600"
+                >
                   הצהרת נגישות
                 </Link>
-              </p>
+              </div>
             </div>
           </Container>
         </footer>

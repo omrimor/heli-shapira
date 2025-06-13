@@ -2,41 +2,63 @@
 
 import { motion, useMotionValueEvent, useScroll } from 'motion/react';
 import { useState, useEffect } from 'react';
-import { NavigationMenu } from './navigation-menu';
+import { Heart } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { NavLink } from '@/components/nav-link';
 import Link from 'next/link';
 import { Container } from './container';
 
 export function Header() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [scrollDirection, setScrollDirection] = useState('down');
 
   useMotionValueEvent(scrollY, 'change', (current) => {
-    const diff = current - (scrollY?.getPrevious() ?? 0);
-    setScrollDirection(diff > 0 ? 'down' : 'up');
+    setIsScrolled(current > 0);
   });
-
-  useEffect(() => {
-    const unsubscribeY = scrollY.on('change', () => setIsScrolled(scrollY.get() > 0));
-    return () => {
-      unsubscribeY();
-    };
-  }, [scrollY]);
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm transition-all duration-200 ${
-        isScrolled ? 'border-b shadow-sm' : ''
+      className={`sticky top-0 z-40 border-b border-rose-200 bg-rose-50/95 backdrop-blur supports-[backdrop-filter]:bg-rose-50/60 transition-all duration-200 ${
+        isScrolled ? 'shadow-sm' : ''
       }`}
       initial={{ y: 0 }}
       animate={{ y: 0 }}
     >
-      <Container className="h-20 flex flex-col md:flex-row items-center justify-between">
-        <Link href="/" className="font-bold text-xl pt-2 md:pt-0">
-          <span className="text-heli-accent-dark">חלי</span>{' '}
-          <span className="text-heli-accent">רימון</span>
+      <Container className="flex h-16 items-center justify-between py-4">
+        <Link
+          href="/"
+          className="flex items-center gap-2 transition-all duration-300 hover:scale-105"
+        >
+          <Heart
+            className="h-6 w-6 text-terracotta-500 animate-pulse-gentle"
+            style={{ animationDuration: '3s' }}
+          />
+          <span className="text-xl font-semibold tracking-tight text-terracotta-800">
+            <span className="text-terracotta-900">חלי</span>{' '}
+            <span className="text-terracotta-600">רימון</span>
+          </span>
         </Link>
-        <NavigationMenu />
+
+        <nav className="hidden md:flex gap-6">
+          <NavLink href="#services" className="text-warmGray-700 hover:text-terracotta-600">
+            שירותים
+          </NavLink>
+          <NavLink href="#lectures" className="text-warmGray-700 hover:text-terracotta-600">
+            הרצאות
+          </NavLink>
+          <NavLink href="#about" className="text-warmGray-700 hover:text-terracotta-600">
+            אודות
+          </NavLink>
+          <NavLink href="#testimonials" className="text-warmGray-700 hover:text-terracotta-600">
+            המלצות
+          </NavLink>
+        </nav>
+
+        <Button className="bg-terracotta-600 hover:bg-terracotta-700 text-rose-50 transition-all duration-300 hover:scale-105">
+          <a href="#contact" className="text-inherit no-underline">
+            צור קשר
+          </a>
+        </Button>
       </Container>
     </motion.header>
   );
