@@ -40,19 +40,10 @@ export function About({ data }: Props) {
           </HeadingWithHighlight>
           <StructuredText data={aboutDescription} />
         </div>
-        <div className="flex">
-          <div className="filter-none mr-auto md:saturate-0 group-hover:saturate-100 transition-all md:max-w-[15rem] relative">
-            <Draw
-              className="absolute top-0 right-0 translate-x-1/2 translate-y-full"
-              width={100}
-              height={200}
-            />
-            <figure>
-              <ResponsiveImage data={aboutProfilePicture?.responsiveImage!} />
-              <figcaption>{aboutProfilePicture?.alt}</figcaption>
-            </figure>
-          </div>
-        </div>
+        <figure>
+          <ResponsiveImage data={aboutProfilePicture?.responsiveImage!} />
+          <figcaption>{aboutProfilePicture?.alt}</figcaption>
+        </figure>
       </Container>
     </section>
   );
