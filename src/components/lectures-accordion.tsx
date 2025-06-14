@@ -58,7 +58,7 @@ interface LecturesAccordionProps {
 }
 
 export function LecturesAccordion({ lectures }: LecturesAccordionProps) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const handleToggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
