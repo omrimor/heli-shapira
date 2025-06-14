@@ -2,6 +2,7 @@ import { FragmentOf, graphql, readFragment } from '@/lib/datocms/graphql';
 import { StructuredText } from 'react-datocms';
 import { CheckCircle } from 'lucide-react';
 import { AnimatedSection } from '@/components/animated-section';
+import { AboutContent } from '@/components/about-content';
 
 import ResponsiveImage, { ResponsiveImageFragment } from '@/components/ResponsiveImage';
 
@@ -44,14 +45,10 @@ export function About({ data }: Props) {
           </AnimatedSection>
           <AnimatedSection direction="none" delay={300} className="space-y-4">
             <div className="inline-block rounded-lg bg-rose-200 px-3 py-1 text-sm text-terracotta-800">
-              עליי{' '}
+              חלי רימון{' '}
             </div>
-            <h2 className="text-3xl font-bold tracking-tighter text-terracotta-900 sm:text-4xl">
-              {aboutTitle}
-            </h2>
-            <div className="text-warmGray-700 prose prose-p:text-warmGray-700 max-w-none">
-              <StructuredText data={aboutDescription} />
-            </div>
+
+            <AboutContent aboutTitle={aboutTitle} aboutDescription={aboutDescription} />
           </AnimatedSection>
         </div>
       </div>
