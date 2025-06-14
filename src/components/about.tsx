@@ -2,6 +2,7 @@ import { FragmentOf, graphql, readFragment } from '@/lib/datocms/graphql';
 import { StructuredText } from 'react-datocms';
 import { CheckCircle } from 'lucide-react';
 import { AnimatedSection } from '@/components/animated-section';
+import { AboutContent } from '@/components/about-content';
 
 import ResponsiveImage, { ResponsiveImageFragment } from '@/components/ResponsiveImage';
 
@@ -35,23 +36,19 @@ export function About({ data }: Props) {
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
           <AnimatedSection
-            direction="left"
+            direction="none"
             className="relative h-[400px] md:h-[600px] w-full rounded-lg overflow-hidden shadow-lg"
           >
             {aboutProfilePicture?.responsiveImage && (
               <ResponsiveImage data={aboutProfilePicture.responsiveImage} />
             )}
           </AnimatedSection>
-          <AnimatedSection direction="right" delay={300} className="space-y-4">
+          <AnimatedSection direction="none" delay={300} className="space-y-4">
             <div className="inline-block rounded-lg bg-rose-200 px-3 py-1 text-sm text-terracotta-800">
-              עליי{' '}
+              חלי רימון{' '}
             </div>
-            <h2 className="text-3xl font-bold tracking-tighter text-terracotta-900 sm:text-4xl">
-              {aboutTitle}
-            </h2>
-            <div className="text-warmGray-700 prose prose-p:text-warmGray-700 max-w-none">
-              <StructuredText data={aboutDescription} />
-            </div>
+
+            <AboutContent aboutTitle={aboutTitle} aboutDescription={aboutDescription} />
           </AnimatedSection>
         </div>
       </div>

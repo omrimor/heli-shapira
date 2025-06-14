@@ -40,14 +40,14 @@ export function Header() {
         </Link>
 
         <nav className="hidden md:flex gap-6">
+          <NavLink href="#about" className="text-warmGray-700 hover:text-terracotta-600">
+            אודות
+          </NavLink>
           <NavLink href="#services" className="text-warmGray-700 hover:text-terracotta-600">
             שירותים
           </NavLink>
           <NavLink href="#lectures" className="text-warmGray-700 hover:text-terracotta-600">
             הרצאות
-          </NavLink>
-          <NavLink href="#about" className="text-warmGray-700 hover:text-terracotta-600">
-            אודות
           </NavLink>
           <NavLink href="#testimonials" className="text-warmGray-700 hover:text-terracotta-600">
             המלצות

@@ -63,10 +63,10 @@ export default async function HomePage() {
   return (
     <div className="flex min-h-screen flex-col bg-rose-50 text-warmGray-800">
       <main className="flex-1">
+        <About data={homePage} />
         <Hero data={homePage} />
         <Services data={homePage} />
         <Lectures data={homePage} />
-        <About data={homePage} />
         <Recommendations data={homePage} />
         <Contact data={homePage}>
           <ContactForm />
