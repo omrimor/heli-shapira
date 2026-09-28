@@ -1,6 +1,4 @@
-import { ApiError } from '@datocms/cma-client';
 import { NextResponse } from 'next/server';
-import { serializeError } from 'serialize-error';
 
 export function withCORS(responseInit?: ResponseInit): ResponseInit {
   return {
@@ -15,25 +13,12 @@ export function withCORS(responseInit?: ResponseInit): ResponseInit {
 }
 
 export function handleUnexpectedError(error: unknown) {
-  try {
-    throw error;
-  } catch (e) {
-    console.error(e);
-  }
+  // Log the full error server-side only. Never serialize it into the response:
+  // DatoCMS client errors carry the request (incl. the Authorization header
+  // with the API token) and the request payload.
+  console.error(error);
 
-  if (error instanceof ApiError) {
-    return NextResponse.json(
-      {
-        success: false,
-        error: error.message,
-        request: error.request,
-        response: error.response,
-      },
-      withCORS({ status: 500 }),
-    );
-  }
-
-  return invalidRequestResponse(serializeError(error), 500);
+  return invalidRequestResponse('Internal server error', 500);
 }
 
 export function invalidRequestResponse(error: unknown, status = 422) {

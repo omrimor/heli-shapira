@@ -19,14 +19,11 @@
       "tokenName": "CMA Only (Admin)"
     },
     "SECRET_API_TOKEN": {
-      "type": "string",
-      "value": "secretTokenProtectingWebhookEndpointsFromBeingCalledByAnyone"
+      "type": "secret",
+      "format": "readable",
+      "label": "Draft Mode password",
+      "description": "You'll need it to turn on Draft Mode from the website."
     }
   },
-  "livePreviewUrl": "https://datocms-nextjs-starter-kit.vercel.app/",
-  "postDeploy": {
-    "type": "apiCall",
-    "url": "/api/post-deploy",
-    "description": "Setting up the DatoCMS project..."
-  }
+  "livePreviewUrl": "https://datocms-nextjs-starter-kit.vercel.app/"
 }
